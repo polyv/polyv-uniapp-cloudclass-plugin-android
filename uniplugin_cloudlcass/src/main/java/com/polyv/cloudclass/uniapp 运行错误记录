@@ -1,0 +1,56 @@
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.HBuilder.UniPlugin/com.easefun.polyv.cloudclassdemo.login.PolyvCloudClassLoginActivity}:
+java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.
+
+方法一：修改Theme主题
+在AndroidManifest.xml加上
+android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+通过，但是云打包时会失败
+
+方法二：修改Activity继承自Activity而不是AppCompatActivity
+
+
+
+
+
+2020-09-07 18:13:43.453 15170-15170/com.HBuilder.UniPlugin
+E/UncaughtExceptionHandler: io.reactivex.exceptions.UndeliverableException:
+    java.lang.NoSuchMethodError: No super method apply(Lcom/bumptech/glide/request/RequestOptions;)
+    Lcom/bumptech/glide/request/RequestOptions;
+    in class Lcom/bumptech/glide/request/RequestOptions;
+or its super classes (declaration of 'com.bumptech.glide.request.RequestOptions' appears in /data/app/com.HBuilder.UniPlugin-QKhTLEqaoGT5VIsmADEASQ==/base.apk!classes17.dex)
+
+原因可能是存在低版本的glide（4。7。1）影响了 4。9。0的运行，换了一下commonui的依赖，同步到主工程版本后正常了。估计最后插件包也是要glide的
+    api ('com.easefun.polyv:polyvSDKCloudClass:0.15.2'){
+        exclude group:'com.github.bumptech.glide',module:'glide'
+        exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+    }
+    //glide
+    api ('jp.wasabeef:glide-transformations:3.3.0'){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    api ("com.github.bumptech.glide:okhttp3-integration:4.9.0"){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+
+
+试着打插件aar包时候一直报错，查到说是需要依赖androidx包，但是uniapp功不支持Andrdoix。
+* What went wrong:
+Execution failed for task ':uniplugin_cloudlcass:verifyReleaseResources'.
+> java.util.concurrent.ExecutionException: com.android.builder.internal.aapt.v2.Aapt2Exception: Android resource linking failed
+  Output:  error: resource style/Theme.AppCompat.Light.DarkActionBar (aka com.shawn.polyvvod:style/Theme.AppCompat.Light.DarkActionBar) not found.
+  /Users/shawn_ysh/PolyvWork/GitLab/UniApp/PLVUniAppCloudClassPlugin-android/uniplugin_cloudlcass/build/intermediates/res/merged/release/values/values.xml:307: error: style attribute 'attr/colorPrimary (aka com.shawn.polyvvod:attr/colorPrimary)' not found.
+  /Users/shawn_ysh/PolyvWork/GitLab/UniApp/PLVUniAppCloudClassPlugin-android/uniplugin_cloudlcass/build/intermediates/res/merged/release/values/values.xml:308: error: style attribute 'attr/colorPrimaryDark (aka com.shawn.polyvvod:attr/colorPrimaryDark)' not found.
+  /Users/shawn_ysh/PolyvWork/GitLab/UniApp/PLVUniAppCloudClassPlugin-android/uniplugin_cloudlcass/build/intermediates/res/merged/release/values/values.xml:309: error: style attribute 'attr/colorAccent (aka com.shawn.polyvvod:attr/colorAccent)' not found.
+  error: failed linking references.
+
+  1、试着删除DarkActionBar 无效
+  2、发现cloudclassSDK、business里面会有 Theme.AppCompat.Light.DarkActionBar
+  如果在cloudlcass插件的gradle里面改用implementation "com.android.support:appcompat-v7:27.1.1"就打包正常了
+  但是这大概率会和云打包有冲突，
+  奇怪的是删除SDK中的DarkActionBar，又还会继续发生其他not found 的资源问题
+  Output:  /Users/shawn_ysh/PolyvWork/GitLab/UniApp/PLVUniAppCloudClassPlugin-android/uniplugin_cloudlcass/build/intermediates/res/merged/release/layout/polyv_tips_view_gif.xml:7: error: resource style/Base.Widget.AppCompat.ProgressBar.Horizontal (aka com.shawn.polyvvod:style/Base.Widget.AppCompat.ProgressBar.Horizontal) not found.
+  error: failed linking file resources.
+
+  尝试使用implementation方案，理论上打包时候不会包含的。先看一下

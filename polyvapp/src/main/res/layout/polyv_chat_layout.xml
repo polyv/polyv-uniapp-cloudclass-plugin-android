@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/chat_tab_background"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/chat_top_select_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+        </HorizontalScrollView>
+
+        <com.easefun.polyv.cloudclassdemo.watch.player.live.widget.PolyvChatPullLayout
+            android:id="@+id/chat_top_pull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.easefun.polyv.cloudclassdemo.watch.player.live.widget.PolyvChatPullLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="-1dp"
+        android:background="#F3F3F4" />
+
+    <com.easefun.polyv.commonui.widget.PolyvSimpleViewPager
+        android:id="@+id/chat_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat_top_select_layout"
+        android:background="@color/white">
+
+    </com.easefun.polyv.commonui.widget.PolyvSimpleViewPager>
+</LinearLayout>

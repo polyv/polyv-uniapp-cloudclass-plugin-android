@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PolyvMarqueeTextView">
+        <attr name="scroll_interval" format="integer" />
+        <attr name="scroll_first_delay" format="integer" />
+        <attr name="scroll_mode">
+            <enum name="mode_forever" value="100" />
+            <enum name="mode_once" value="101" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="PolyvPressedImageView">
+        <attr name="pressed_color" format="color" />
+        <attr name="selected_color" format="color" />
+        <attr name="disabled_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PolyvMediaCheckView">
+
+        <attr name="placeholder" format="reference|color" />
+        <attr name="mainColor" format="color" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PolyvBeadWidget">
+        <attr name="bead_margin" format="dimension" />
+        <attr name="bead_radius" format="dimension" />
+        <attr name="selected_bead_color" format="color" />
+        <attr name="unselected_bead_color" format="color" />
+    </declare-styleable>
+</resources>

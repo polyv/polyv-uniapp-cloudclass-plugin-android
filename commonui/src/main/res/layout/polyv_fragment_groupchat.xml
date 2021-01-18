@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/plv_rl_group_chat_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9ebf5">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/chat_pull_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/fl_bottom">
+
+        <com.easefun.polyv.commonui.widget.PolyvChatRecyclerView
+            android:id="@+id/chat_message_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingBottom="10dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.easefun.polyv.commonui.widget.PolyvPressedHalfBgView
+        android:id="@+id/tv_unread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fl_bottom"
+        android:background="#d04a90e2"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="有更多新消息，点击查看"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/fl_gonggao"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#59000000"
+        android:visibility="gone">
+
+        <com.easefun.polyv.commonui.widget.PolyvMarqueeTextView
+            android:id="@+id/tv_gonggao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            app:scroll_first_delay="100"
+            app:scroll_interval="6666"
+            app:scroll_mode="mode_forever" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl_gonggao"
+        android:layout_margin="8dp"
+        android:background="@drawable/polyv_tv_bg_corner"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <com.easefun.polyv.commonui.widget.PolyvGreetingTextView
+            android:id="@+id/greeting_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:visibility="invisible"
+            app:scroll_first_delay="100"
+            app:scroll_interval="6666"
+            app:scroll_mode="mode_once" />
+    </FrameLayout>
+
+    <!--    <com.easefun.polyv.commonui.widget.PolyvGreetingView
+            android:id="@+id/greeting_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="60dp"
+            android:visibility="invisible" />-->
+
+    <com.easefun.polyv.commonui.widget.PolyvCornerBgTextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/fl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/ic_chat_edit_group"
+                layout="@layout/polyv_chat_edit_group"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <include
+                android:id="@+id/ic_chat_emo_list_layout"
+                layout="@layout/polyv_chat_emo_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="236dp" />
+
+            <include
+                android:id="@+id/ic_chat_add_more_layout"
+                layout="@layout/polyv_chat_add_more"
+                android:layout_width="match_parent"
+                android:layout_height="106dp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <com.easefun.polyv.commonui.widget.PolyvLikeIconView
+        android:id="@+id/liv_like"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/fl_bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

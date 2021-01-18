@@ -1,0 +1,43 @@
+{
+  "nativePlugins": [
+    {
+      "plugins": [
+        {
+          "type": "module",
+          "name": "TestModule",
+          "class": "io.dcloud.uniplugin.TestModule"
+        }
+      ]
+    },
+    {
+      "hooksClass": "",
+      "plugins": [
+        {
+          "type": "module",
+          "name": "DCloud-RichAlert",
+          "class": "uni.dcloud.io.uniplugin_richalert.RichAlertWXModule"
+        }
+      ]
+    },
+    {
+      "hooksClass": "com.polyv.cloudclass.PolyvAppProxy",
+      "plugins": [
+        {
+          "type": "module",
+          "name": "PLV-CloudUniPlugin-TestModule",
+          "class": "com.polyv.cloudclass.TestModule"
+        },
+        {
+          "type": "module",
+          "name": "PLV-CloudUniPlugin-ConfigModule",
+          "class": "com.polyv.cloudclass.PolyvConfigModule"
+        },
+        {
+          "type": "module",
+          "name": "PLV-CloudUniPlugin-PlayModule",
+          "class": "com.polyv.cloudclass.PolyvLiveModule"
+        }
+      ]
+    }
+  ]
+}

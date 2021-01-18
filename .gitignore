@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+.idea/
+.DS_Store/
+/local.properties
+*/build
+/captures
+build/
+make/
+release/
+.DS_Store
+app/src/main/assets/pptForMobile.js
+app/src/main/assets/pptForMobile.html
+classes/*.class
+/gradle_bintray_user.properties

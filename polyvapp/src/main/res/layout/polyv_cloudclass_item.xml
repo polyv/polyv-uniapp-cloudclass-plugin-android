@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 播放区域布局，全屏时会移除这一块 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:clipChildren="false">
+
+    <!-- 主播放器布局 -->
+    <include
+        layout="@layout/polyv_cloudclass_videoview_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/fl_danmu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dm_10" />
+    <!-- 子播放器布局 -->
+    <include
+        layout="@layout/polyv_videoview_sub_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 亮度手势提示 -->
+    <com.easefun.polyv.commonui.player.widget.PolyvLightTipsView
+        android:id="@+id/tipsview_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <!-- 音量手势提示 -->
+    <com.easefun.polyv.commonui.player.widget.PolyvVolumeTipsView
+        android:id="@+id/tipsview_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <!-- 控制栏 -->
+    <com.easefun.polyv.cloudclassdemo.watch.player.live.PolyvCloudClassMediaController
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_start_time_count_down"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="#FF0AA9F5"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:visibility="gone"
+        tools:text="倒计时：06天22小时07分31秒"
+        tools:visibility="visible" />
+
+</RelativeLayout>

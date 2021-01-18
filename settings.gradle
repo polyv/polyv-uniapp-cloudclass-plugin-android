@@ -1,0 +1,6 @@
+include ':app', ':commonui', ':polyvapp'
+include ':uniplugin_module'
+include ':uniplugin_component'
+include ':uniplugin_richalert'
+include ':uniplugin_cloudlcass'
+

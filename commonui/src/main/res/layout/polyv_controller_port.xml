@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_port"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:visibility="visible"
+    tools:background="@color/gray_deep">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/polyv_video_top_gradient" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/polyv_video_bottom_gradient" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom_controll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/iv_playpause"
+            style="@style/Controller_Play_Button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/selector_controller_play_and_pause" />
+
+        <TextView
+            android:id="@+id/tv_currenttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/iv_playpause"
+            android:text="00:00"
+            android:textColor="#ffffff"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/tv_totaltime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/tv_currenttime"
+            android:text=" / 00:00"
+            android:textColor="#ffffff"
+            android:textSize="11dp" />
+
+        <SeekBar
+            android:id="@+id/sb_playprogress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@+id/pb_ppt_video_switch"
+            android:layout_toEndOf="@id/tv_totaltime"
+            android:focusable="true"
+            android:max="1000"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="5dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="10dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/polyv_sb_bg_drawable"
+            android:secondaryProgress="0"
+            android:thumb="@drawable/polyv_sb_thumb"
+            android:thumbOffset="0dp" />
+
+        <ImageView
+            android:id="@+id/iv_orientation"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/controller_fullscreen" />
+
+        <ImageView
+            android:id="@+id/pb_ppt_video_switch"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/iv_orientation"
+            android:src="@drawable/controller_exchange" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/pb_subview_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl_bottom_controll"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ppt"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt_controller_more"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/controller_more"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/iv_back_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back" />
+
+
+</RelativeLayout>

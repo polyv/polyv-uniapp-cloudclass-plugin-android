@@ -1,0 +1,83 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion 28
+        versionCode 1
+        versionName "0.0.1"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+//导入aar需要的配置
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly fileTree(dir: '../app/libs', include: ['uniapp-v8-release.aar'])
+
+    compileOnly "com.android.support:recyclerview-v7:28.0.0"
+    compileOnly "com.android.support:support-v4:28.0.0"
+    implementation "com.android.support:appcompat-v7:28.0.0"// 没有impl打包会失败
+    implementation 'com.alibaba:fastjson:1.1.46.android'
+    implementation 'com.facebook.fresco:fresco:0.12.0'
+
+    //测试，添加所有的依赖
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    compileOnly 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
+    compileOnly 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
+    compileOnly 'com.squareup.retrofit2:retrofit:2.4.0'
+    compileOnly 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compileOnly 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    compileOnly 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    compileOnly 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    compileOnly 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    compileOnly 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    compileOnly 'com.google.code.gson:gson:2.8.5'
+    compileOnly 'com.blankj:utilcode:1.9.9'
+    compileOnly('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+
+    //business
+    compileOnly 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+    compileOnly 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+    compileOnly 'de.hdodenhof:circleimageview:2.2.0'
+    compileOnly 'com.github.lzyzsd:jsbridge:1.0.4'
+
+    //LinkMic
+    compileOnly 'io.agora.rtc:full-sdk:2.9.0.107'
+
+
+    //demo
+    compileOnly 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    compileOnly("com.aliyun.ams:alicloud-android-httpdns:1.1.7@aar") {
+        transitive true
+    }
+
+}

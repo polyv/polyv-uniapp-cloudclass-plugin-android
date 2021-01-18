@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "proguard-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        qatest {
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly 'com.android.support:appcompat-v7:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compileOnly 'com.android.support:design:28.0.0'
+    api ('com.easefun.polyv:polyvSDKCloudClass:0.16.1'){
+        exclude group:'com.github.bumptech.glide',module:'glide'
+        exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+    }
+    //glide
+    api ('jp.wasabeef:glide-transformations:3.3.0'){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    api ("com.github.bumptech.glide:okhttp3-integration:4.9.0"){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+}

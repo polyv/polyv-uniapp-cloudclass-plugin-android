@@ -1,0 +1,348 @@
+09-25 17:36:47.397 16947-16947/? E/Utils:DataTracker: ut not exist
+    java.lang.ClassNotFoundException: com.ut.mini.UTAnalytics
+        at java.lang.Class.classForName(Native Method)
+        at java.lang.Class.forName(Class.java:324)
+        at java.lang.Class.forName(Class.java:285)
+        at com.alibaba.sdk.android.utils.c.b(DataTracker.java:104)
+        at com.alibaba.sdk.android.utils.c.a(DataTracker.java:30)
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.<init>(AlicloudTrackerManager.java:30)
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.getInstance(AlicloudTrackerManager.java:45)
+        at com.alibaba.sdk.android.httpdns.c.a.<init>(Unknown Source)
+        at com.alibaba.sdk.android.httpdns.c.a.a(Unknown Source)
+        at com.alibaba.sdk.android.httpdns.HttpDns.getService(Unknown Source)
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.<init>(PolyvOkHttpDns.java:31)
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.getInstance(PolyvOkHttpDns.java:41)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.primalOkHttpBuilder(PolyvRetrofitHelper.java:93)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.baseOkHttpBuilder(PolyvRetrofitHelper.java:86)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.userAgentOkHttpClient(PolyvRetrofitHelper.java:134)
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.createOkHttpClient(PolyvApiManager.java:28)
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.getPolyvLiveStatusApi(PolyvApiManager.java:35)
+        at com.easefun.polyv.cloudclass.chat.PolyvChatApiRequestHelper.requestLiveClassDetailApi(PolyvChatApiRequestHelper.java:54)
+        at com.polyv.cloudclass.PolyvLiveModule.startLive(PolyvLiveModule.java:61)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.taobao.weex.bridge.MethodInvoker.invoke(MethodInvoker.java:46)
+        at com.taobao.weex.bridge.NativeInvokeHelper$2.run(NativeInvokeHelper.java:78)
+        at com.taobao.weex.common.WXThread$SafeRunnable.run(WXThread.java:71)
+        at android.os.Handler.handleCallback(Handler.java:739)
+        at android.os.Handler.dispatchMessage(Handler.java:95)
+        at android.os.Looper.loop(Looper.java:179)
+        at android.app.ActivityThread.main(ActivityThread.java:5769)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674)
+     Caused by: java.lang.ClassNotFoundException: Didn't find class "com.ut.mini.UTAnalytics" on path: DexPathList[[zip file "/data/app/uni.UNI533BC34-1/base.apk"],nativeLibraryDirectories=[/data/app/uni.UNI533BC34-1/lib/arm, /data/app/uni.UNI533BC34-1/base.apk!/lib/armeabi-v7a, /vendor/lib, /system/lib]]
+        at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:56)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:511)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:469)
+        at java.lang.Class.classForName(Native Method) 
+        at java.lang.Class.forName(Class.java:324) 
+        at java.lang.Class.forName(Class.java:285) 
+        at com.alibaba.sdk.android.utils.c.b(DataTracker.java:104) 
+        at com.alibaba.sdk.android.utils.c.a(DataTracker.java:30) 
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.<init>(AlicloudTrackerManager.java:30) 
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.getInstance(AlicloudTrackerManager.java:45) 
+        at com.alibaba.sdk.android.httpdns.c.a.<init>(Unknown Source) 
+        at com.alibaba.sdk.android.httpdns.c.a.a(Unknown Source) 
+        at com.alibaba.sdk.android.httpdns.HttpDns.getService(Unknown Source) 
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.<init>(PolyvOkHttpDns.java:31) 
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.getInstance(PolyvOkHttpDns.java:41) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.primalOkHttpBuilder(PolyvRetrofitHelper.java:93) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.baseOkHttpBuilder(PolyvRetrofitHelper.java:86) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.userAgentOkHttpClient(PolyvRetrofitHelper.java:134) 
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.createOkHttpClient(PolyvApiManager.java:28) 
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.getPolyvLiveStatusApi(PolyvApiManager.java:35) 
+        at com.easefun.polyv.cloudclass.chat.PolyvChatApiRequestHelper.requestLiveClassDetailApi(PolyvChatApiRequestHelper.java:54) 
+        at com.polyv.cloudclass.PolyvLiveModule.startLive(PolyvLiveModule.java:61) 
+        at java.lang.reflect.Method.invoke(Native Method) 
+        at com.taobao.weex.bridge.MethodInvoker.invoke(MethodInvoker.java:46) 
+        at com.taobao.weex.bridge.NativeInvokeHelper$2.run(NativeInvokeHelper.java:78) 
+        at com.taobao.weex.common.WXThread$SafeRunnable.run(WXThread.java:71) 
+        at android.os.Handler.handleCallback(Handler.java:739) 
+        at android.os.Handler.dispatchMessage(Handler.java:95) 
+        at android.os.Looper.loop(Looper.java:179) 
+        at android.app.ActivityThread.main(ActivityThread.java:5769) 
+        at java.lang.reflect.Method.invoke(Native Method) 
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784) 
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674) 
+    	Suppressed: java.lang.ClassNotFoundException: com.ut.mini.UTAnalytics
+        at java.lang.Class.classForName(Native Method)
+        at java.lang.BootClassLoader.findClass(ClassLoader.java:781)
+        at java.lang.BootClassLoader.loadClass(ClassLoader.java:841)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:504)
+        		... 31 more
+     Caused by: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack trace available
+09-25 17:36:47.397 16947-16947/? E/Utils:DataTracker: init failed due to ut not exsits
+09-25 17:36:47.401 16947-16947/? E/CrashUtils: load sdk file fail:
+    java.io.FileNotFoundException: /data/user/0/uni.UNI533BC34/files/com_alibaba_aliyun_crash_defend_sdk_info: open failed: ENOENT (No such file or directory)
+        at libcore.io.IoBridge.open(IoBridge.java:452)
+        at java.io.FileInputStream.<init>(FileInputStream.java:76)
+        at android.app.ContextImpl.openFileInput(ContextImpl.java:407)
+        at android.content.ContextWrapper.openFileInput(ContextWrapper.java:188)
+        at com.alibaba.sdk.android.utils.crashdefend.e.a(CrashDefendUtils.java:95)
+        at com.alibaba.sdk.android.utils.crashdefend.b.a(CrashDefendManager.java:79)
+        at com.alibaba.sdk.android.utils.crashdefend.b.<init>(CrashDefendManager.java:69)
+        at com.alibaba.sdk.android.utils.crashdefend.b.a(CrashDefendManager.java:28)
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.<init>(AlicloudTrackerManager.java:32)
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.getInstance(AlicloudTrackerManager.java:45)
+        at com.alibaba.sdk.android.httpdns.c.a.<init>(Unknown Source)
+        at com.alibaba.sdk.android.httpdns.c.a.a(Unknown Source)
+        at com.alibaba.sdk.android.httpdns.HttpDns.getService(Unknown Source)
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.<init>(PolyvOkHttpDns.java:31)
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.getInstance(PolyvOkHttpDns.java:41)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.primalOkHttpBuilder(PolyvRetrofitHelper.java:93)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.baseOkHttpBuilder(PolyvRetrofitHelper.java:86)
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.userAgentOkHttpClient(PolyvRetrofitHelper.java:134)
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.createOkHttpClient(PolyvApiManager.java:28)
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.getPolyvLiveStatusApi(PolyvApiManager.java:35)
+        at com.easefun.polyv.cloudclass.chat.PolyvChatApiRequestHelper.requestLiveClassDetailApi(PolyvChatApiRequestHelper.java:54)
+        at com.polyv.cloudclass.PolyvLiveModule.startLive(PolyvLiveModule.java:61)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.taobao.weex.bridge.MethodInvoker.invoke(MethodInvoker.java:46)
+        at com.taobao.weex.bridge.NativeInvokeHelper$2.run(NativeInvokeHelper.java:78)
+        at com.taobao.weex.common.WXThread$SafeRunnable.run(WXThread.java:71)
+        at android.os.Handler.handleCallback(Handler.java:739)
+        at android.os.Handler.dispatchMessage(Handler.java:95)
+        at android.os.Looper.loop(Looper.java:179)
+        at android.app.ActivityThread.main(ActivityThread.java:5769)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674)
+     Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+        at libcore.io.Posix.open(Native Method)
+        at libcore.io.BlockGuardOs.open(BlockGuardOs.java:186)
+        at libcore.io.IoBridge.open(IoBridge.java:438)
+        at java.io.FileInputStream.<init>(FileInputStream.java:76) 
+        at android.app.ContextImpl.openFileInput(ContextImpl.java:407) 
+        at android.content.ContextWrapper.openFileInput(ContextWrapper.java:188) 
+        at com.alibaba.sdk.android.utils.crashdefend.e.a(CrashDefendUtils.java:95) 
+        at com.alibaba.sdk.android.utils.crashdefend.b.a(CrashDefendManager.java:79) 
+        at com.alibaba.sdk.android.utils.crashdefend.b.<init>(CrashDefendManager.java:69) 
+        at com.alibaba.sdk.android.utils.crashdefend.b.a(CrashDefendManager.java:28) 
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.<init>(AlicloudTrackerManager.java:32) 
+        at com.alibaba.sdk.android.utils.AlicloudTrackerManager.getInstance(AlicloudTrackerManager.java:45) 
+        at com.alibaba.sdk.android.httpdns.c.a.<init>(Unknown Source) 
+        at com.alibaba.sdk.android.httpdns.c.a.a(Unknown Source) 
+        at com.alibaba.sdk.android.httpdns.HttpDns.getService(Unknown Source) 
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.<init>(PolyvOkHttpDns.java:31) 
+        at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.getInstance(PolyvOkHttpDns.java:41) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.primalOkHttpBuilder(PolyvRetrofitHelper.java:93) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.baseOkHttpBuilder(PolyvRetrofitHelper.java:86) 
+        at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.userAgentOkHttpClient(PolyvRetrofitHelper.java:134) 
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.createOkHttpClient(PolyvApiManager.java:28) 
+        at com.easefun.polyv.cloudclass.net.PolyvApiManager.getPolyvLiveStatusApi(PolyvApiManager.java:35) 
+        at com.easefun.polyv.cloudclass.chat.PolyvChatApiRequestHelper.requestLiveClassDetailApi(PolyvChatApiRequestHelper.java:54) 
+        at com.polyv.cloudclass.PolyvLiveModule.startLive(PolyvLiveModule.java:61) 
+        at java.lang.reflect.Method.invoke(Native Method) 
+        at com.taobao.weex.bridge.MethodInvoker.invoke(MethodInvoker.java:46) 
+        at com.taobao.weex.bridge.NativeInvokeHelper$2.run(NativeInvokeHelper.java:78) 
+        at com.taobao.weex.common.WXThread$SafeRunnable.run(WXThread.java:71) 
+        at android.os.Handler.handleCallback(Handler.java:739) 
+        at android.os.Handler.dispatchMessage(Handler.java:95) 
+        at android.os.Looper.loop(Looper.java:179) 
+        at android.app.ActivityThread.main(ActivityThread.java:5769) 
+        at java.lang.reflect.Method.invoke(Native Method) 
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784) 
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674) 
+09-25 17:36:47.406 16947-16947/? W/ResourceType: No package identifier when getting value for resource number 0x00000000
+09-25 17:36:47.407 16947-16947/? E/AMSConfigUtils: ams_httpdns_secretKey is NULL
+09-25 17:36:47.418 16947-16947/? E/Utils:DataTracker: send custom hit failed due to ut not exists
+09-25 17:36:47.422 16947-16947/? W/System.err: java.lang.NoClassDefFoundError: com.alibaba.sdk.android.httpdns.a.a$1
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.alibaba.sdk.android.httpdns.a.a.<init>(Unknown Source)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.alibaba.sdk.android.httpdns.a.a.a(Unknown Source)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.alibaba.sdk.android.httpdns.HttpDns.initHttpDns(Unknown Source)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.alibaba.sdk.android.httpdns.HttpDns.getService(Unknown Source)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.<init>(PolyvOkHttpDns.java:31)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.foundationsdk.net.PolyvOkHttpDns.getInstance(PolyvOkHttpDns.java:41)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.primalOkHttpBuilder(PolyvRetrofitHelper.java:93)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.baseOkHttpBuilder(PolyvRetrofitHelper.java:86)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.foundationsdk.net.PolyvRetrofitHelper.userAgentOkHttpClient(PolyvRetrofitHelper.java:134)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.cloudclass.net.PolyvApiManager.createOkHttpClient(PolyvApiManager.java:28)
+09-25 17:36:47.422 16947-16947/? W/System.err:     at com.easefun.polyv.cloudclass.net.PolyvApiManager.getPolyvLiveStatusApi(PolyvApiManager.java:35)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.easefun.polyv.cloudclass.chat.PolyvChatApiRequestHelper.requestLiveClassDetailApi(PolyvChatApiRequestHelper.java:54)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.polyv.cloudclass.PolyvLiveModule.startLive(PolyvLiveModule.java:61)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.taobao.weex.bridge.MethodInvoker.invoke(MethodInvoker.java:46)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.taobao.weex.bridge.NativeInvokeHelper$2.run(NativeInvokeHelper.java:78)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.taobao.weex.common.WXThread$SafeRunnable.run(WXThread.java:71)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at android.os.Handler.handleCallback(Handler.java:739)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at android.os.Handler.dispatchMessage(Handler.java:95)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at android.os.Looper.loop(Looper.java:179)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at android.app.ActivityThread.main(ActivityThread.java:5769)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at java.lang.reflect.Method.invoke(Native Method)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+09-25 17:36:47.423 16947-16947/? W/System.err:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674)
+09-25 17:36:47.613 16947-17067/? E/Utils:DataTracker: send custom hit failed due to ut not exists
+09-25 17:36:50.232 16947-16947/? E/Html5Plus-SplashClosed: 1601026610232
+09-25 17:36:50.232 16947-16947/? E/Main_Path: closeSplashScreen0 appid=__UNI__533BC34;true;closeSplashDid=true
+09-25 17:36:59.129 11727-11727/? W/DaemonThread-6: type=1400 audit(0.0:548): avc: denied { search } for uid=10334 name="1" dev="proc" ino=4962 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:init:s0 tclass=dir permissive=0
+09-25 17:37:03.974 1821-1822/? E/rutils: releaseProcess gCount = 1
+09-25 17:37:07.998 6378-6536/? W/thread_monitor: stopService: EmptyService10000_0_true
+09-25 17:37:08.694 1591-2594/? W/Watchdog_N: !@WatchDog_2533;
+09-25 17:37:30.572 1591-1606/? W/ActivityManager: Force removing ActivityRecord{28b5956 u0 uni.UNI533BC34/io.dcloud.PandoraEntryActivity t147}: app died, no saved state
+09-25 17:37:30.583 1591-17104/? E/libprocessgroup: failed to kill 1 processes for processgroup 16947
+09-25 17:37:30.589 1591-1606/? E/qti_sensors_hal: enable:sensor(android.sensor.accelerometer) handle 0, freq=14.999925 report_rate=0 batched=0
+09-25 17:37:30.607 16081-16081/com.polyv.unicloud E/platform: java.lang.ClassNotFoundException: io.dcloud.common.util.net.http.LocalServer
+09-25 17:37:30.607 16081-16081/com.polyv.unicloud W/weex: Warning :Component tree has not build completely, onActivityResume can not be call!
+09-25 17:37:30.609 16081-16081/com.polyv.unicloud E/Html5Plus-onResume: 1601026650609
+09-25 17:37:30.623 16081-16081/com.polyv.unicloud E/AssistantInput: onCreateInputConnection 00
+09-25 17:37:30.625 1591-2765/? W/InputMethodManagerService: Got RemoteException sending setActive(false) notification to pid 16947 uid 10476
+09-25 17:37:30.625 1591-1769/? E/ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=269, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+09-25 17:37:30.626 1591-1769/? E/ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ id=268, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+09-25 17:37:30.672 1591-1693/? E/qti_sensors_hal: processReportInd: X: 0.581207 Y: 9.523865 Z: 2.509903 , timestamp = 3645860049
+09-25 17:37:30.711 1591-1693/? E/qti_sensors_hal: processReportInd: X: 0.541718 Y: 9.528656 Z: 2.500336 , timestamp = 3645861321
+09-25 17:37:30.750 1591-1693/? E/qti_sensors_hal: processReportInd: X: 0.558472 Y: 9.526260 Z: 2.527847 , timestamp = 3645862595
+09-25 17:37:31.359 3679-3683/? E/ANDR-PERF-MPCTL: invalid request, no optimizations performed
+09-25 17:37:31.360 3679-3683/? E/ANDR-PERF-MPCTL: Invalid profile no. 0, total profiles 0 only
+09-25 17:37:31.386 16081-16081/com.polyv.unicloud W/weex: Warning :Component tree has not build completely,onActivityPause can not be call!
+09-25 17:37:31.386 16081-16081/com.polyv.unicloud E/weex: PerformanceData
+09-25 17:37:31.482 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.x5.X5InitImpl init
+09-25 17:37:31.506 17117-17117/? E/WeexInstanceMgr: resAppVersionName--=1.0.0   +fcAppVersionName=1.0.0     false
+09-25 17:37:31.579 17117-17131/? E/art: Failed to register native method io.dcloud.common.cs.DL.dtn([B)Ljava/lang/String; in /data/app/uni.UNI533BC34-1/base.apk:classes2.dex
+09-25 17:37:31.579 17117-17131/? E/art: ----- class 'Lio/dcloud/common/cs/DL;' cl=0x12cc8c20 -----
+09-25 17:37:31.579 17117-17131/? E/art:   objectSize=468 (440 from super)
+09-25 17:37:31.579 17117-17131/? E/art:   access=0x0000.0001
+09-25 17:37:31.579 17117-17131/? E/art:   super='java.lang.Class<java.lang.Object>' (cl=0x0)
+09-25 17:37:31.579 17117-17131/? E/art:   vtable (6 entries, 11 in super):
+09-25 17:37:31.579 17117-17131/? E/art:      0: void io.dcloud.common.cs.DL.act(java.lang.String, java.lang.Object)
+09-25 17:37:31.579 17117-17131/? E/art:      1: void io.dcloud.common.cs.DL.ar(java.lang.String, java.lang.Object)
+09-25 17:37:31.579 17117-17131/? E/art:      2: boolean io.dcloud.common.cs.DL.cf(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      3: byte[] io.dcloud.common.cs.DL.lf(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      4: java.lang.String io.dcloud.common.cs.DL.pm(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      5: void io.dcloud.common.cs.DL.sc()
+09-25 17:37:31.579 17117-17131/? E/art:   direct methods (9 entries):
+09-25 17:37:31.579 17117-17131/? E/art:      0: void io.dcloud.common.cs.DL.<clinit>()
+09-25 17:37:31.579 17117-17131/? E/art:      1: void io.dcloud.common.cs.DL.<init>()
+09-25 17:37:31.579 17117-17131/? E/art:      2: io.dcloud.common.cs.DL io.dcloud.common.cs.DL.Instance()
+09-25 17:37:31.579 17117-17131/? E/art:      3: void io.dcloud.common.cs.DL.arn(java.lang.String, java.lang.Object)
+09-25 17:37:31.579 17117-17131/? E/art:      4: void io.dcloud.common.cs.DL.atcn(java.lang.String, java.lang.Object)
+09-25 17:37:31.579 17117-17131/? E/art:      5: boolean io.dcloud.common.cs.DL.cfn(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      6: byte[] io.dcloud.common.cs.DL.lfn(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      7: java.lang.String io.dcloud.common.cs.DL.pmn(java.lang.String)
+09-25 17:37:31.579 17117-17131/? E/art:      8: void io.dcloud.common.cs.DL.scn()
+09-25 17:37:31.579 17117-17131/? E/art:   static fields (1 entries):
+09-25 17:37:31.579 17117-17131/? E/art:      0: io.dcloud.common.cs.DL io.dcloud.common.cs.DL.mInstance
+09-25 17:37:31.581 17117-17131/? E/weex: tryUseRunTimeApi ? false
+09-25 17:37:31.727 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.weex_amap.AMapPluginImpl initPlugin
+09-25 17:37:31.731 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.weex_livepusher.LivePusherPlugin initPlugin
+09-25 17:37:31.731 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.weex_media.VideoPlayerPlugin initPlugin
+09-25 17:37:31.734 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.gcanvas.GCanvasRegister initPlugin
+09-25 17:37:31.735 17117-17117/? E/platform: ClassNotFoundException io.dcloud.feature.weex_ad.DCWXAdPlugin initPlugin
+09-25 17:37:31.738 17117-17117/? E/DCLoudApplicationImpl: mApplication--=io.dcloud.application.DCloudApplication@629663b
+09-25 17:37:31.768 17117-17131/? W/weex: app AvailMemory ---->>>1631
+09-25 17:37:31.773 17117-17117/? W/System: ClassLoader referenced unknown path: /system/app/WebViewGoogle/lib/arm
+09-25 17:37:31.782 17117-17131/? E/WXParams: setCrashFilePath: /data/user/0/uni.UNI533BC34/app_crash
+09-25 17:37:31.782 17117-17131/? E/weex: weexjss's Path is/data/app/uni.UNI533BC34-1/lib/arm/libweexjss.so
+09-25 17:37:31.785 17117-17131/? E/weex: getUseSingleProcess is running false
+09-25 17:37:31.785 17117-17131/? E/WeexCore: params_utils.cpp:214,g_use_single_process is false
+09-25 17:37:31.785 17117-17131/? E/weex: getReleaseMap:true
+09-25 17:37:31.785 17117-17131/? E/weex: getLibJscPath is running
+09-25 17:37:31.785 17117-17131/? E/WeexCore: params_utils.cpp:258,g_jscSoPath is
+09-25 17:37:31.785 17117-17131/? E/weex: getLibJssPath is running /data/app/uni.UNI533BC34-1/lib/arm/libweexjss.so
+09-25 17:37:31.785 17117-17131/? E/WeexCore: params_utils.cpp:271,g_jssSoPath is /data/app/uni.UNI533BC34-1/lib/arm/libweexjss.so
+09-25 17:37:31.785 17117-17131/? E/WXParams: getCrashFilePath:/data/user/0/uni.UNI533BC34/app_crash
+09-25 17:37:31.785 17117-17131/? E/WeexCore: params_utils.cpp:283,g_crashFilePath is /data/user/0/uni.UNI533BC34/app_crash
+09-25 17:37:31.785 17117-17131/? E/weex: getLibIcuPath is running /system/usr/icu/icudt55l.dat
+09-25 17:37:31.785 17117-17131/? E/WeexCore: params_utils.cpp:296,g_jssIcuPath is /system/usr/icu/icudt55l.dat
+09-25 17:37:31.785 17117-17131/? E/weex: getLibJsbPath is running /data/data/uni.UNI533BC34/cache/weex/libs/weexjsb/armeabi-v7a/libweexjsb.so
+09-25 17:37:31.786 17117-17131/? E/weex: getLibLdPath is running /data/app/uni.UNI533BC34-1/lib/arm:/data/app/uni.UNI533BC34-1/base.apk!/lib/armeabi-v7a
+09-25 17:37:31.786 17117-17131/? E/WeexCore: setDebugMode  2
+09-25 17:37:31.787 17117-17131/? E/WeexCore: multi_process_and_so_initializer.cpp:38,MultiProcessAndSoInitializer IS IN init
+09-25 17:37:31.787 17117-17131/? E/WeexCore: weex_js_connection.cpp:142,WeexJSConnection g_crashFileName: /data/user/0/uni.UNI533BC34/app_crash/crash_dump.log
+09-25 17:37:31.788 17117-17131/? E/WeexCore: weex_js_connection.cpp:262,startupPie :1
+09-25 17:37:31.794 17142-17142/? E/WeexCore: weex_js_connection.cpp:283,weexcore fork child success
+09-25 17:37:31.816 3679-3683/? E/ANDR-PERF-MPCTL: invalid request, no optimizations performed
+09-25 17:37:31.844 17142-17148/? E/WeexCore: script_bridge_in_multi_process.cpp:271, enable backupThread 0
+09-25 17:37:31.845 17142-17148/? E/WeexCore: weex_task_queue.cpp:144, start weex queue init
+09-25 17:37:31.845 17142-17151/? E/WeexCore: weex_task_queue.cpp:125, [weex_plan] new runtime
+09-25 17:37:31.846 17142-17151/? E/WeexCore: weex_runtime_v2.cpp:35, jsengine
+09-25 17:37:31.846 17142-17151/? E/WeexCore: weex_jsc_utils.h:250, skip initICUEnv
+09-25 17:37:31.857 17142-17151/? E/WeexCore: weex_global_object_v2.cpp:144, jss use runtime
+09-25 17:37:31.892 17117-17117/? E/Html5Plus-onCreate: 1601026651892
+09-25 17:37:31.905 17117-17117/? E/DCloud_LOG: channel:uni.UNI533BC34|__UNI__533BC34|122092210408|;ver:1.9.9.80395;max:3;trim:0;dg:true
+09-25 17:37:31.915 17117-17117/? W/ImageLoader: memoryCache() and memoryCacheSize() calls overlap each other
+09-25 17:37:31.920 17117-17117/? W/ImageLoader: memoryCache() and memoryCacheSize() calls overlap each other
+09-25 17:37:31.920 17117-17117/? W/ImageLoader: discCache(), discCacheSize() and discCacheFileCount calls overlap each other
+09-25 17:37:31.953 17117-17117/? E/platform: NoSuchMethodException android.telephony.TelephonyManager getImei2
+09-25 17:37:31.992 17117-17117/? W/Bundle: Key DCLOUD_AD_ID expected String but value was a java.lang.Float.  The default value <null> was returned.
+09-25 17:37:31.992 17117-17117/? W/Bundle: Attempt to cast generated internal exception:
+    java.lang.ClassCastException: java.lang.Float cannot be cast to java.lang.String
+        at android.os.BaseBundle.getString(BaseBundle.java:939)
+        at io.dcloud.b.a(Unknown Source)
+        at io.dcloud.b.onCreate(Unknown Source)
+        at io.dcloud.WebAppActivity.onCreate(Unknown Source)
+        at android.app.Activity.performCreate(Activity.java:6497)
+        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1108)
+        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2519)
+        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2626)
+        at android.app.ActivityThread.access$1100(ActivityThread.java:170)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1494)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:179)
+        at android.app.ActivityThread.main(ActivityThread.java:5769)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:784)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:674)
+09-25 17:37:32.010 17117-17117/? W/ResourceType: No package identifier when getting value for resource number 0x00000000
+09-25 17:37:32.017 17117-17117/? E/platform: ClassNotFoundException io.dcloud.appstream.actionbar.StreamAppActionBarUtil checkNeedTitleView
+09-25 17:37:32.022 17117-17117/? E/Html5Plus-onResume: 1601026652022
+09-25 17:37:32.204 17117-17117/? E/DCloud_LOG: fmgr no dp
+09-25 17:37:32.233 17117-17117/? E/DCloud_LOG: channel:uni.UNI533BC34|__UNI__533BC34|122092210408|;ver:1.9.9.80395;max:3;trim:0;dg:true
+09-25 17:37:32.254 17117-17117/? E/DCloud_LOG: PlatformUtil.getResInputStream FileNotFoundException pFilePath=data/api.json
+09-25 17:37:32.337 17117-17117/? E/appMgr: START_APP__UNI__533BC34
+09-25 17:37:32.342 17117-17117/? E/streamsdk: come into createAppRootView pAppid===__UNI__533BC34
+09-25 17:37:32.343 17117-17117/? E/streamsdk: come into createAppRootView and new le rootview  pAppid===__UNI__533BC34
+09-25 17:37:32.358 17117-17117/? E/platform: ClassNotFoundException io.dcloud.appstream.actionbar.StreamAppActionBarUtil makeTitleViewDefault
+09-25 17:37:32.359 17117-17117/? E/platform: ClassNotFoundException io.dcloud.appstream.actionbar.StreamAppActionBarUtil UpdateTitle
+09-25 17:37:32.364 17117-17117/? E/platform: ClassNotFoundException io.dcloud.appstream.actionbar.StreamAppActionBarUtil resumeTitleView
+09-25 17:37:32.365 17117-17117/? E/platform: ClassNotFoundException io.dcloud.appstream.actionbar.StreamAppActionBarUtil checkNeedTitleView
+09-25 17:37:32.365 17117-17117/? E/useTime: name :start_app_set_rootview; <<-- 启动io.dcloud.common.core.ui.b$b{539b62c V.E...... ......ID 0,0-0,0} -->> useTime = 28
+09-25 17:37:32.366 17117-17117/? E/DCloud_LOG: Webapp start __UNI__533BC34
+09-25 17:37:32.368 17117-17117/? E/webapp: start0 mAppid===__UNI__533BC34
+09-25 17:37:32.369 17117-17117/? E/StreamSDK: come into activeAppRootView
+09-25 17:37:32.400 17117-17117/? E/WXViewWrapper: WXViewWrapper----------isPre=false  wxid=__uniapp__service
+09-25 17:37:32.405 17117-17117/? E/IAN: new AppWidgetMgr   1601026652405appid==__UNI__533BC34
+09-25 17:37:32.433 17117-17117/? E/DCloud_LOG: createWindow before _url=file:///storage/emulated/0/Android/data/uni.UNI533BC34/apps/__UNI__533BC34/www/__uniappview.html
+09-25 17:37:32.433 17117-17117/? E/DCloud_LOG: createWindow after _url=file:///storage/emulated/0/Android/data/uni.UNI533BC34/apps/__UNI__533BC34/www/__uniappview.html
+09-25 17:37:32.484 17117-17117/? E/platform: NoSuchMethodException android.telephony.TelephonyManager getImei2
+09-25 17:37:32.515 17117-17117/? E/useTime: name :createFrameView; <<-- createFrameView耗时： -->> useTime = 104
+09-25 17:37:32.587 17117-17202/? E/libEGL: validate_display:255 error 3008 (EGL_BAD_DISPLAY)
+09-25 17:37:32.614 17117-17117/? E/weex: idle from create instance cache size is 0
+09-25 17:37:32.622 17117-17202/? W/VideoCapabilities: Unrecognized profile 2130706433 for video/avc
+09-25 17:37:32.622 17117-17202/? W/VideoCapabilities: Unrecognized profile 2130706434 for video/avc
+09-25 17:37:32.628 17117-17202/? W/Utils: could not parse long range '175-174'
+09-25 17:37:32.633 17117-17202/? W/VideoCapabilities: Unrecognized profile/level 0/3 for video/mpeg2
+09-25 17:37:32.634 17117-17131/? E/weex: end getBundleType type:Vue time:0
+09-25 17:37:32.635 17117-17202/? W/VideoCapabilities: Unrecognized profile/level 0/3 for video/mpeg2
+09-25 17:37:32.636 17117-17131/? E/timeline: createInstance :1601026652636
+09-25 17:37:32.639 17117-17202/? W/VideoCapabilities: Unsupported mime video/x-ms-wmv
+09-25 17:37:32.640 17117-17202/? W/VideoCapabilities: Unsupported mime video/x-ms-wmv
+09-25 17:37:32.642 17117-17202/? W/VideoCapabilities: Unsupported mime video/wvc1
+09-25 17:37:32.643 17142-17151/? E/WeexCore: weex_global_object_v2.cpp:144, jss use runtime
+09-25 17:37:32.645 17117-17117/? E/chromium: [ERROR:interface_registry.cc(104)] Failed to locate a binder for interface: autofill::mojom::PasswordManagerDriver
+09-25 17:37:32.645 17117-17202/? W/VideoCapabilities: Unsupported mime video/wvc1
+09-25 17:37:32.646 17117-17202/? W/VideoCapabilities: Unsupported mime video/divx
+09-25 17:37:32.647 17117-17131/? E/jsEngine: script_bridge_in_multi_process.cpp:473,ScriptBridgeInMultiProcess::CreateInstance and Id is : 1
+09-25 17:37:32.648 17117-17202/? W/VideoCapabilities: Unsupported mime video/divx311
+09-25 17:37:32.650 17117-17202/? W/VideoCapabilities: Unsupported mime video/divx4
+09-25 17:37:32.664 17117-17202/? W/VideoCapabilities: Unsupported mime video/mp4v-esdp
+09-25 17:37:32.732 17117-17117/? W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 17117
+09-25 17:37:33.020 16081-16081/com.polyv.unicloud E/DCloudApplication: onTrimMemory
+09-25 17:37:33.448 17117-17218/? E/WebViewData: syncUpdateWebViewData url=null
+09-25 17:37:33.630 17117-17117/? W/View: requestLayout() improperly called by android.widget.RelativeLayout{23da47d V.E...... ......ID 0,54-1080,186} during layout: running second layout pass
+09-25 17:37:33.631 17117-17117/? W/View: requestLayout() improperly called by android.widget.RelativeLayout{20b4f72 V.E...... ......ID 374,36-705,95} during layout: running second layout pass
+09-25 17:37:33.661 17117-17131/? E/weex: Argument value is null, df is0
+09-25 17:37:33.831 17117-17117/? E/shutao: new -- JSNWindow=_www/__uniappview.html
+09-25 17:37:33.831 17117-17117/? E/DCloud_LOG: createNWindow pUrl=_www/__uniappview.html
+09-25 17:37:33.842 17117-17117/? E/DCloud_LOG: createWindow before _url=_www/__uniappview.html
+09-25 17:37:33.842 17117-17117/? E/DCloud_LOG: createWindow after _url=_www/__uniappview.html
+09-25 17:37:33.861 17117-17117/? E/useTime: name :createFrameView; <<-- createFrameView耗时： -->> useTime = 28
+09-25 17:37:33.891 17117-17117/? E/chromium: [ERROR:interface_registry.cc(104)] Failed to locate a binder for interface: autofill::mojom::PasswordManagerDriver
+09-25 17:37:33.904 17117-17117/? W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 17117
+09-25 17:37:33.915 1591-1591/? W/WindowManager: Attempted to remove non-existing token: android.os.Binder@b5fce50
+09-25 17:37:33.974 1821-1822/? E/rutils: releaseProcess gCount = 1
+09-25 17:37:34.047 17117-17117/? E/Html5Plus-SplashClosed: 1601026654047
+09-25 17:37:34.048 17117-17117/? E/Main_Path: closeSplashScreen0 appid=__UNI__533BC34;true;closeSplashDid=false
+09-25 17:37:34.131 17117-17218/? E/WebViewData: syncUpdateWebViewData url=null
+09-25 17:37:38.695 1591-2594/? W/Watchdog_N: !@WatchDog_2534;
+09-25 17:37:42.669 17117-17117/? E/Html5Plus-SplashClosed: 1601026662669
+09-25 17:37:42.669 17117-17117/? E/Main_Path: closeSplashScreen0 appid=__UNI__533BC34;true;closeSplashDid=true
