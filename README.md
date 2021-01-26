@@ -25,14 +25,6 @@ Android 开发环境：JDK 1.8+， AndroidStudio 3.0+
 
 
 
-## 下载离线 SDK 包
-
-本项目基于想正常运行，需先到 uni-app 的官网下载离线 SDK 包 —— [下载链接](https://nativesupport.dcloud.net.cn/AppDocs/download/android)。
-
-⚠️注意，SDK 包的与 HBuilderX 的版本一一对应，请根据你 HBuilderX 的版本下载对应的 SDK 包。本项目基于 v2.8.6 版本的 SDK 进行开发，建议不要使用跟该版本差异太大的版本。
-
-将下载后的离线 SDK 包中的 SDK 文件夹放到当前项目的根目录下。
-
 ## 引入 App 资源
 
 每个 uni-app 项目都有自己的应用标识，可在配置文件 mainfest.json 中的【基础配置】里看到。关于 AppID 的更多信息，详见 [DCloud appid 用途/作用/使用说明](https://ask.dcloud.net.cn/article/35907)。
@@ -71,7 +63,10 @@ Android 开发环境：JDK 1.8+， AndroidStudio 3.0+
 
 按创建证书时填写的信息，输入Key的相关信息，点击Next，选择【release】，并将弹窗下方【Signature Version】一起勾选 V1 和 V2。点击Finish，将会生成正式包，位于 app/release/下。
 
+
+
 ### 项目配置
+
 关于如何对 app 进行个性化配置，譬如 app 图标、app 名称、app 版本号、app 启动图等，uni-app 官方有详细的文档指导，见：[Android 原生工程配置](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/android)。
 
 该项目还支持添加其他 uni-app 原生插件，添加方法详见 uni-app 官方的指引文档 [Android 离线打包使用插件](https://nativesupport.dcloud.net.cn/NativePlugin/offline_package/android)。
