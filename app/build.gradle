@@ -12,6 +12,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         ndk {
+            //todo 'x86'用于支持模拟器架构，最后正式包可删除用以缩减包体积
             abiFilters 'x86','armeabi-v7a'
         }
     }
@@ -74,13 +75,17 @@ dependencies {
     //使用模块下的依赖包，不应当直接在模块中使用，否则会把jar等依赖包打到aar里面，增加用户处理依赖冲突难度
     implementation fileTree(dir: '../uniplugin_cloudlcass/libs', include: ['*.jar','*.aar'])
 
+
+    //可能会与VideoPlayer插件冲突，需要注释
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
+
     //添加依赖
     implementation 'com.android.support:design:28.0.0'
     api 'jp.wasabeef:glide-transformations:3.3.0'
     api 'com.github.bumptech.glide:okhttp3-integration:4.9.0'
 
-    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
@@ -93,7 +98,7 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
 
-    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.github.lzyzsd:jsbridge:1.0.4'
 

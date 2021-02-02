@@ -41,6 +41,14 @@ Android 开发环境：JDK 1.8+， AndroidStudio 3.0+
 
 ## 
 
+## SDK 集成
+
+为避免SDK更新导致的插件兼容问题，开发者应当根据集成的版本下载Android 离线SDK：https://nativesupport.dcloud.net.cn/AppDocs/download/android。
+
+然后按照[官方文档](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/android?id=%e9%85%8d%e7%bd%ae%e5%b7%a5%e7%a8%8b)，更新 app/libs 下的对应sdk文件。
+
+
+
 ### Android 离线打包集成
 
 由于 uni-app 的云端打包限制了每日免费打包的次数以及免费打包的包体的大小（超过40M每次打包需充值付费），使用离线打包的方式会更加自由、方便。
