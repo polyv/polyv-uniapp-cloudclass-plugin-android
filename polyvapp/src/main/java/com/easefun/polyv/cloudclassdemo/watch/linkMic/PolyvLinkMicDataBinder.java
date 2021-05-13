@@ -98,10 +98,10 @@ public class PolyvLinkMicDataBinder extends IPolyvDataBinder {
     }
 
     @NonNull
-    public PolyvLinkMicDataBinder.PolyvMicHodler onCreateViewHolder(@NonNull ViewGroup parent, int pos) {
+    public PolyvMicHodler onCreateViewHolder(@NonNull ViewGroup parent, int pos) {
         PolyvCommonLog.d(TAG, "onCreateViewHolder:");
         ViewGroup child = (ViewGroup) View.inflate(parent.getContext(), R.layout.link_mic_scroll_item, null);
-        PolyvLinkMicDataBinder.PolyvMicHodler polyvMicHodler = new PolyvLinkMicDataBinder.PolyvMicHodler(child);
+        PolyvMicHodler polyvMicHodler = new PolyvMicHodler(child);
         SurfaceView surfaceView = createSurfaceView();
         if (surfaceView != null) {
             polyvMicHodler.camerLayout.addView(surfaceView, 1);
@@ -174,7 +174,7 @@ public class PolyvLinkMicDataBinder extends IPolyvDataBinder {
         this.itemClicker = clickListener;
     }
 
-    public void onBindViewHolder(PolyvLinkMicDataBinder.PolyvMicHodler holder, int position) {
+    public void onBindViewHolder(PolyvMicHodler holder, int position) {
 
         String uid = uids.get(position);
 

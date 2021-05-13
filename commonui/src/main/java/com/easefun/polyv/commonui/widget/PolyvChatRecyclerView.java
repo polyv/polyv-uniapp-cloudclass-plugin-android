@@ -73,7 +73,7 @@ public class PolyvChatRecyclerView extends RecyclerView {
         this.unreadView = unreadView;
         if (unreadView == null)
             return;
-        unreadView.setOnClickListener(new View.OnClickListener() {
+        unreadView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 hideUnredaView();
@@ -98,7 +98,7 @@ public class PolyvChatRecyclerView extends RecyclerView {
     }
 
     public void addOnScrollListener() {
-        addOnScrollListener(new RecyclerView.OnScrollListener() {
+        addOnScrollListener(new OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);

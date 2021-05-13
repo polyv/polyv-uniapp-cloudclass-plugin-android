@@ -3,7 +3,6 @@ package com.polyv.cloudclass;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.easefun.polyv.businesssdk.vodplayer.PolyvVodSDKClient;
 import com.easefun.polyv.cloudclass.chat.PolyvChatManager;
 import com.easefun.polyv.cloudclass.config.PolyvLiveSDKClient;
 import com.easefun.polyv.cloudclassdemo.watch.PolyvCloudClassHomeActivity;
@@ -66,7 +65,6 @@ public class PolyvConfigModule extends WXModule {
 
         PolyvLinkMicClient.getInstance().setAppIdSecret(appId, secret);
         PolyvLiveSDKClient.getInstance().setAppIdSecret(appId, secret);
-        PolyvVodSDKClient.getInstance().initConfig(appId, secret);
 
         if (callback != null) {
             JSONObject succeed = new JSONObject();
@@ -121,4 +119,26 @@ public class PolyvConfigModule extends WXModule {
         }
     }
 
+    @JSMethod(uiThread = false)
+    public void setMarqueeConfig(JSONObject options, JSCallback callback) {
+        if (options == null) {
+            if (callback != null) {
+                JSONObject err = new JSONObject();
+                err.put("isSuccess", false);
+                err.put("errMsg", "传入参数不能为空");
+                callback.invoke(err);
+            }
+            return;
+        }
+
+        String code = JsonOptionUtil.getString(options, "code", "");
+        PolyvCloudClassHomeActivity.setMarqueeCode(code);
+
+        if (callback != null) {
+            JSONObject succeed = new JSONObject();
+            succeed.put("isSuccess", true);
+            callback.invoke(succeed);
+        }
+
+    }
 }

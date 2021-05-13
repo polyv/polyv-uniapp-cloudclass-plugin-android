@@ -33,7 +33,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compileOnly 'com.android.support:design:28.0.0'
-    api ('com.easefun.polyv:polyvSDKCloudClass:0.16.1'){
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    api ('net.polyv.android:polyvSDKCloudClass:0.16.4'){
         exclude group:'com.github.bumptech.glide',module:'glide'
         exclude group:'com.github.bumptech.glide',module:'gifdecoder'
     }

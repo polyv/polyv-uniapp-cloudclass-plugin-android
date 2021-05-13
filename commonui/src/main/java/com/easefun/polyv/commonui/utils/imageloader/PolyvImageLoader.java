@@ -24,13 +24,6 @@ import java.util.concurrent.ExecutionException;
 public class PolyvImageLoader {
     // <editor-fold defaultstate="collapsed" desc="单例">
     private static PolyvImageLoader INSTANCE;
-    private IImageLoadEngine loadEngine;
-
-    {
-        loadEngine = new GlideImageLoadEngine();
-    }
-    // </editor-fold>
-
 
     private PolyvImageLoader() {/**/}
 
@@ -44,6 +37,14 @@ public class PolyvImageLoader {
         }
         return INSTANCE;
     }
+    // </editor-fold>
+
+
+    private IImageLoadEngine loadEngine;
+
+    {
+        loadEngine = new GlideImageLoadEngine();
+    }
 
     /**
      * 加载图片
@@ -51,6 +52,13 @@ public class PolyvImageLoader {
     public void loadImage(Context context, String url, ImageView imageView) {
         url = makeUrlHttps(url);
         loadEngine.loadImage(context, url, imageView);
+    }
+
+    /**
+     * 加载图片，使用resource id
+     */
+    public void loadImage(Context context, @DrawableRes int resId, ImageView imageView) {
+        loadEngine.loadImage(context, resId, imageView);
     }
 
     /**

@@ -9,7 +9,9 @@ import com.easefun.polyv.businesssdk.web.IPolyvWebMessageProcessor;
 import com.easefun.polyv.cloudclass.playback.video.PolyvPlaybackVideoView;
 import com.easefun.polyv.commonui.PolyvCommonVideoHelper;
 import com.easefun.polyv.commonui.player.ppt.PolyvPPTItem;
+import com.easefun.polyv.commonui.utils.PLVNetworkBroadcastReceiver;
 import com.easefun.polyv.foundationsdk.log.PolyvCommonLog;
+import com.easefun.polyv.thirdpart.blankj.utilcode.util.ToastUtils;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 
 public class PolyvPlaybackVideoHelper extends PolyvCommonVideoHelper<PolyvPlaybackVideoItem,
@@ -20,6 +22,13 @@ public class PolyvPlaybackVideoHelper extends PolyvCommonVideoHelper<PolyvPlayba
 
     public PolyvPlaybackVideoHelper(PolyvPlaybackVideoItem videoItem, PolyvPPTItem polyvPPTItem) {
         super(videoItem, polyvPPTItem);
+        networkBroadcastReceiver.setListener(new PLVNetworkBroadcastReceiver.OnNetworkBroadcastReceiverListener() {
+            @Override
+            public void onConnectedMobile() {
+                PolyvCommonLog.d(TAG, "onConnectedMobile");
+                ToastUtils.showShort("当前为非Wi-Fi环境，请注意流量消耗");
+            }
+        });
     }
 
     @Override

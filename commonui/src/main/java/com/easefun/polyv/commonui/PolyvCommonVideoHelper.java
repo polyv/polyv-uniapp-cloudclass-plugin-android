@@ -19,12 +19,14 @@ import com.easefun.polyv.cloudclass.video.api.IPolyvCloudClassVideoView;
 import com.easefun.polyv.commonui.player.IPolyvVideoItem;
 import com.easefun.polyv.commonui.player.ppt.PolyvPPTItem;
 import com.easefun.polyv.commonui.player.ppt.PolyvPPTView;
+import com.easefun.polyv.commonui.utils.PLVNetworkBroadcastReceiver;
 import com.easefun.polyv.commonui.widget.PolyvTouchContainerView;
 import com.easefun.polyv.foundationsdk.config.PolyvPlayOption;
 import com.easefun.polyv.foundationsdk.log.PolyvCommonLog;
 import com.easefun.polyv.foundationsdk.permission.PolyvPermissionManager;
 import com.easefun.polyv.foundationsdk.utils.PolyvScreenUtils;
 import com.easefun.polyv.thirdpart.blankj.utilcode.util.ScreenUtils;
+import com.easefun.polyv.thirdpart.blankj.utilcode.util.Utils;
 
 /**
  * @author df
@@ -34,27 +36,32 @@ import com.easefun.polyv.thirdpart.blankj.utilcode.util.ScreenUtils;
 public abstract class PolyvCommonVideoHelper<T extends IPolyvVideoItem<P, Q>, P extends PolyvCommonVideoView,
         Q extends PolyvCommonMediacontroller<P>> {
     protected static final String TAG = "PolyvCommonVideoHelper";
-    protected static final Handler S_HANDLER;
-
-    static {
-        S_HANDLER = new Handler(Looper.getMainLooper());
-    }
-
     protected Context context;
     protected T videoItem;
+
     protected ViewGroup pptContianer;
     protected PolyvTouchContainerView pptParent;
     protected PolyvPPTView pptView;
+
     protected ViewGroup playerParent, playerView;
     protected ViewGroup subVideoviewParent;
     protected P videoView;
     protected PolyvBaseVideoParams playOption;
     protected PolyvAuxiliaryVideoview subVideoview;
-    //    protected static int videoViewVolume;
     protected Q controller;
-    protected View loadingView, noStreamView, audioModeView, screenShotView;
+    protected static final Handler S_HANDLER;
+//    protected static int videoViewVolume;
+
+    static {
+        S_HANDLER = new Handler(Looper.getMainLooper());
+    }
+
     protected PolyvPermissionManager permissionManager;
+
+    protected View loadingView, noStreamView, audioModeView, screenShotView;
+
     private boolean firstSwitchLocation = true;//第一次切换主副屏 不用动画
+    protected PLVNetworkBroadcastReceiver networkBroadcastReceiver = new PLVNetworkBroadcastReceiver();
 
     public PolyvCommonVideoHelper(T videoItem, PolyvPPTItem polyvPPTItem) {
         this.videoItem = videoItem;
@@ -74,6 +81,7 @@ public abstract class PolyvCommonVideoHelper<T extends IPolyvVideoItem<P, Q>, P 
         controller.setMediaPlayer(videoView);
 
         initPPT(videoItem, polyvPPTItem);
+        networkBroadcastReceiver.init(Utils.getApp());
 
     }
 
@@ -250,6 +258,7 @@ public abstract class PolyvCommonVideoHelper<T extends IPolyvVideoItem<P, Q>, P 
 
     public void startPlay(PolyvBaseVideoParams polyvBaseVideoParams) {
         playOption = polyvBaseVideoParams;
+        videoItem.setBaseVideoParams(polyvBaseVideoParams);
         if (videoView instanceof IPolyvCloudClassVideoView) {
             videoView.playByMode(polyvBaseVideoParams, PolyvPlayOption.PLAYMODE_LIVE);
         } else if (videoView instanceof PolyvVodVideoView || videoView instanceof PolyvPlaybackVideoView) {
@@ -318,6 +327,7 @@ public abstract class PolyvCommonVideoHelper<T extends IPolyvVideoItem<P, Q>, P 
         videoView.destroy();
         controller.destroy();
         videoItem.destroy();
+        networkBroadcastReceiver.destroy(Utils.getApp());
 
         videoView = null;
         controller = null;

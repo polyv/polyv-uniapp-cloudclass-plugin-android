@@ -51,7 +51,7 @@ public abstract class ClickableViewHolder<M, Q extends PolyvBaseRecyclerViewAdap
         super(itemView);
         this.parentView = itemView;
         this.contentContainer = parentView.findViewById(R.id.message_container);
-        resendMessageButton = $(com.easefun.polyv.commonui.R.id.resend_message_button);
+        resendMessageButton = $(R.id.resend_message_button);
         this.adapter = adapter;
         this.context = parentView.getContext();
     }

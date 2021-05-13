@@ -43,6 +43,11 @@ public class GlideImageLoadEngine implements IImageLoadEngine {
     }
 
     @Override
+    public void loadImage(Context context, int resId, ImageView imageView) {
+        Glide.with(context).load(resId).into(imageView);
+    }
+
+    @Override
     @WorkerThread
     public File saveImageAsFile(Context context, String url) throws ExecutionException, InterruptedException {
         return Glide.with(context)

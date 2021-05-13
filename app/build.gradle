@@ -72,14 +72,15 @@ dependencies {
     // 添加uni-app插件模块
     implementation project(path: ':uniplugin_cloudlcass')
 
+    //当和VideoPlayer同时使用时，需要注释这个依赖
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+
+
     //使用模块下的依赖包，不应当直接在模块中使用，否则会把jar等依赖包打到aar里面，增加用户处理依赖冲突难度
     implementation fileTree(dir: '../uniplugin_cloudlcass/libs', include: ['*.jar','*.aar'])
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
-    //可能会与VideoPlayer插件冲突，需要注释
-    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
 
     //添加依赖
     implementation 'com.android.support:design:28.0.0'

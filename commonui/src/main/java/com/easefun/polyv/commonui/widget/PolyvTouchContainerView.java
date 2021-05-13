@@ -95,13 +95,13 @@ public class PolyvTouchContainerView extends FrameLayout {
             if (offY > 0 && view.getBottom() + offY > parentHeight)
                 top = view.getTop() + (parentHeight - view.getBottom());
 
-            ViewGroup.MarginLayoutParams rlp = null;
+            MarginLayoutParams rlp = null;
             if (getParent() instanceof RelativeLayout) {
                 rlp = (RelativeLayout.LayoutParams) view.getLayoutParams();
             } else if (getParent() instanceof LinearLayout) {
                 rlp = (LinearLayout.LayoutParams) view.getLayoutParams();
             } else if (getParent() instanceof FrameLayout) {
-                rlp = (FrameLayout.LayoutParams) view.getLayoutParams();
+                rlp = (LayoutParams) view.getLayoutParams();
             } else {
                 return true;
             }
@@ -118,13 +118,13 @@ public class PolyvTouchContainerView extends FrameLayout {
 
     public void resetFloatViewLand() {
 //        canMove = true;
-        ViewGroup.MarginLayoutParams layoutParams = null;
+        MarginLayoutParams layoutParams = null;
         if (getParent() instanceof RelativeLayout) {
             layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof LinearLayout) {
             layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            layoutParams = (FrameLayout.LayoutParams) getLayoutParams();
+            layoutParams = (LayoutParams) getLayoutParams();
         } else {
             return;
         }
@@ -151,7 +151,7 @@ public class PolyvTouchContainerView extends FrameLayout {
         } else if (getParent() instanceof LinearLayout) {
             rlp = (LinearLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            rlp = (FrameLayout.LayoutParams) getLayoutParams();
+            rlp = (LayoutParams) getLayoutParams();
         } else {
             return;
         }
@@ -187,7 +187,7 @@ public class PolyvTouchContainerView extends FrameLayout {
         post(new Runnable() {
             @Override
             public void run() {
-                ViewGroup.MarginLayoutParams rlp = getLayoutParamsLayout();
+                MarginLayoutParams rlp = getLayoutParamsLayout();
                 if (rlp == null) {
                     return;
                 }
@@ -205,9 +205,9 @@ public class PolyvTouchContainerView extends FrameLayout {
 
     }
 
-    private ViewGroup.MarginLayoutParams getLayoutParamsLayout() {
+    private MarginLayoutParams getLayoutParamsLayout() {
         ViewGroup.LayoutParams lp = getLayoutParams();
-        if (lp instanceof ViewGroup.MarginLayoutParams) {
+        if (lp instanceof MarginLayoutParams) {
             return (MarginLayoutParams) lp;
         } else {
             return null;
@@ -218,7 +218,7 @@ public class PolyvTouchContainerView extends FrameLayout {
         post(new Runnable() {
             @Override
             public void run() {
-                ViewGroup.MarginLayoutParams rlp = getLayoutParamsLayout();
+                MarginLayoutParams rlp = getLayoutParamsLayout();
                 if (rlp == null) {
                     return;
                 }

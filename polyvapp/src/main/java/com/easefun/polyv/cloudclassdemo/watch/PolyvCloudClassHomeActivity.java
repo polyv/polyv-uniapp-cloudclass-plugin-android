@@ -175,6 +175,8 @@ public class PolyvCloudClassHomeActivity extends PolyvBaseActivity
     private RotationObserver rotationObserver;
     private PolyvOrientoinListener orientoinListener;
 
+    //uni-app 参数 -----
+
     //是否是普通直播  是否直播回放
     private boolean isNormalLive, isNormalLivePlayBack;
 
@@ -186,6 +188,10 @@ public class PolyvCloudClassHomeActivity extends PolyvBaseActivity
     private static String viewerImg;
     private static String P4;
     private static String P5;
+
+    private static String marqueeCode = "";
+
+    //------ end
 
     //教师信息栏
     private PolyvTeacherInfoLayout teacherInfoLayout;
@@ -213,7 +219,7 @@ public class PolyvCloudClassHomeActivity extends PolyvBaseActivity
         }
     };
 
-    // <editor-fold defaultstate="collapsed" desc="入口">
+    // <editor-fold defaultstate="collapsed" desc="uni-app相关改动设置">
     //带有参与者标志位的直播入口
     public static void startActivityForLiveWithParticipant(Activity activity, String channelId, String userId, boolean isNormalLive, boolean isParticipant, String rtcType) {
         Intent intent = new Intent(activity, PolyvCloudClassHomeActivity.class);
@@ -244,6 +250,14 @@ public class PolyvCloudClassHomeActivity extends PolyvBaseActivity
         viewerImg = img;
         P4 = p4;
         P5 = p5;
+    }
+
+    public static String getMarqueeCode() {
+        return marqueeCode;
+    }
+
+    public static void setMarqueeCode(String code) {
+        marqueeCode = code;
     }
 
     // </editor-fold>

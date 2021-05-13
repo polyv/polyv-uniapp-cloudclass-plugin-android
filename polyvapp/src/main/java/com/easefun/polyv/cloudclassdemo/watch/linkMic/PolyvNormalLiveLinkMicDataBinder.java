@@ -126,10 +126,10 @@ public class PolyvNormalLiveLinkMicDataBinder extends IPolyvDataBinder {
     }
 
     @NonNull
-    public PolyvNormalLiveLinkMicDataBinder.PolyvMicHodler onCreateViewHolder(@NonNull ViewGroup parent, final int pos, final boolean isFront) {
+    public PolyvMicHodler onCreateViewHolder(@NonNull ViewGroup parent, final int pos, final boolean isFront) {
         PolyvCommonLog.d(TAG, "onCreateViewHolder:" + pos);
         final ViewGroup child = (ViewGroup) View.inflate(parent.getContext(), R.layout.normal_live_link_mic_item, null);
-        final PolyvNormalLiveLinkMicDataBinder.PolyvMicHodler polyvMicHodler = new PolyvNormalLiveLinkMicDataBinder.PolyvMicHodler(child);
+        final PolyvMicHodler polyvMicHodler = new PolyvMicHodler(child);
         parentView.post(new Runnable() {
             @Override
             public void run() {
@@ -162,7 +162,7 @@ public class PolyvNormalLiveLinkMicDataBinder extends IPolyvDataBinder {
         return childParams;
     }
 
-    public void onBindViewHolder(PolyvNormalLiveLinkMicDataBinder.PolyvMicHodler holder, int position) {
+    public void onBindViewHolder(PolyvMicHodler holder, int position) {
 
         String uid = uids.get(position);
 

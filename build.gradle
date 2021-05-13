@@ -24,7 +24,6 @@ allprojects {
 
         //在加载云课堂模块时候会用得上
         maven {url 'http://maven.aliyun.com/nexus/content/repositories/releases/'}
-        maven {url 'https://dl.bintray.com/polyv/android'}
 
     }
 }

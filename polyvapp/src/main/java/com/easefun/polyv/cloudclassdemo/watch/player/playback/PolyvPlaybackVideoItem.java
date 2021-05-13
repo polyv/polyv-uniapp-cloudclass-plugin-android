@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +14,24 @@ import android.widget.Toast;
 import com.easefun.polyv.businesssdk.api.auxiliary.PolyvAuxiliaryVideoview;
 import com.easefun.polyv.businesssdk.api.common.player.PolyvPlayError;
 import com.easefun.polyv.businesssdk.api.common.player.listener.IPolyvVideoViewListenerEvent;
+import com.easefun.polyv.businesssdk.model.video.PolyvBaseVideoParams;
 import com.easefun.polyv.businesssdk.model.video.PolyvLiveMarqueeVO;
 import com.easefun.polyv.businesssdk.sub.marquee.PolyvMarqueeItem;
 import com.easefun.polyv.businesssdk.sub.marquee.PolyvMarqueeUtils;
 import com.easefun.polyv.businesssdk.sub.marquee.PolyvMarqueeView;
 import com.easefun.polyv.cloudclass.playback.video.PolyvPlaybackVideoView;
 import com.easefun.polyv.cloudclassdemo.R;
+import com.easefun.polyv.cloudclassdemo.watch.PolyvCloudClassHomeActivity;
 import com.easefun.polyv.commonui.player.IPolyvVideoItem;
 import com.easefun.polyv.commonui.player.PolyvMediaInfoType;
 import com.easefun.polyv.commonui.player.ppt.PolyvPPTItem;
 import com.easefun.polyv.commonui.player.widget.PolyvLightTipsView;
 import com.easefun.polyv.commonui.player.widget.PolyvLoadingLayout;
+import com.easefun.polyv.commonui.player.widget.PolyvPlayerLogoView;
+import com.easefun.polyv.commonui.player.widget.PolyvPlayerRetryLayout;
 import com.easefun.polyv.commonui.player.widget.PolyvProgressTipsView;
 import com.easefun.polyv.commonui.player.widget.PolyvVolumeTipsView;
+import com.easefun.polyv.foundationsdk.config.PolyvPlayOption;
 import com.easefun.polyv.foundationsdk.log.PolyvCommonLog;
 import com.easefun.polyv.foundationsdk.utils.PolyvControlUtils;
 
@@ -37,12 +43,15 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
     private PolyvPlaybackMediaController controller;
     //载入状态指示器
     private PolyvLoadingLayout loadingview;
+    private PolyvPlayerRetryLayout playerRetryLayout;
     //准备中状态显示的视图
     private View preparingview;
     //tips view
     private PolyvLightTipsView polyvLightTipsView;
     private PolyvVolumeTipsView tipsviewVolume;
     private PolyvProgressTipsView tipsviewProgress;
+    // Logo
+    private PolyvPlayerLogoView playbackLogoView;
     //手势滑动进度
     private int fastForwardPos = 0;
 
@@ -57,6 +66,8 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
     private PolyvMarqueeItem marqueeItem = null;
     private PolyvMarqueeUtils marqueeUtils = null;
     private String nickName;
+
+    private PolyvBaseVideoParams baseVideoParams;
 
     public PolyvPlaybackVideoItem(@NonNull Context context) {
         this(context, null);
@@ -80,20 +91,31 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
         videoView = (PolyvPlaybackVideoView) findViewById(R.id.pb_videoview);
         controller = (PolyvPlaybackMediaController) findViewById(R.id.controller);
         loadingview = findViewById(R.id.loadingview);
+        playerRetryLayout = findViewById(R.id.plv_playback_player_retry_layout);
         polyvLightTipsView = (PolyvLightTipsView) findViewById(R.id.tipsview_light);
         tipsviewVolume = (PolyvVolumeTipsView) findViewById(R.id.tipsview_volume);
         tipsviewProgress = (PolyvProgressTipsView) findViewById(R.id.tipsview_progress);
         marqueeView = ((Activity) context).findViewById(R.id.polyv_marquee_view);
-
         preparingview = findViewById(R.id.preparingview);
+
+
         //init controller
         videoView.setMediaController(controller);
         controller.addOtherContolLayout(this);
+
+        playerRetryLayout.setOnClickPlayerRetryListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                videoView.playByMode(baseVideoParams, PolyvPlayOption.PLAYMODE_VOD);
+            }
+        });
 
         noStreamView = findViewById(R.id.no_stream);
         videoView.setNoStreamIndicator(noStreamView);
 
         loadingview.bindVideoView(videoView);
+
+        playbackLogoView = findViewById(R.id.playback_logo_view);
     }
 
     private void initVideoView() {
@@ -102,6 +124,8 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
         videoView.setKeepScreenOn(true);
         videoView.setPlayerBufferingIndicator(loadingview);
         videoView.setNeedGestureDetector(true);
+        videoView.enableRetry(true);
+        videoView.setMaxRetryCount(3);
         videoView.setOnPPTShowListener(new IPolyvVideoViewListenerEvent.OnPPTShowListener() {
             @Override
             public void showPPTView(int visiable) {
@@ -118,7 +142,7 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
         videoView.setOnPreparedListener(new IPolyvVideoViewListenerEvent.OnPreparedListener() {
             @Override
             public void onPrepared() {
-
+                playerRetryLayout.setVisibility(GONE);
             }
 
             @Override
@@ -162,7 +186,8 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
                 if (error.isMainStage()) {
                     preparingview.setVisibility(View.GONE);
                 }
-                Toast.makeText(context, tips + "播放异常\n" + error.errorDescribe + "(" + error.errorCode + "-" + error.playStage + ")\n" + error.playPath, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, tips + "播放异常\n" + error.errorDescribe + "(" + error.errorCode + "-" + error.playStage + ")\n", Toast.LENGTH_SHORT).show();
+                playerRetryLayout.setVisibility(VISIBLE);
             }
         });
         videoView.setOnInfoListener(new IPolyvVideoViewListenerEvent.OnInfoListener() {
@@ -296,8 +321,23 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
                 if (marqueeUtils == null)
                     marqueeUtils = new PolyvMarqueeUtils();
                 // 更新为后台设置的跑马灯类型
+                marqueeUtils.setUsediyurl(true);
                 marqueeUtils.updateMarquee(context, marqueeVo,
-                        marqueeItem, nickName);
+                        marqueeItem, nickName, PolyvCloudClassHomeActivity.getMarqueeCode());
+            }
+        });
+
+        videoView.setOnGetLogoListener(new IPolyvVideoViewListenerEvent.OnGetLogoListener() {
+            @Override
+            public void onLogo(String logoImage, int logoAlpha, int logoPosition, String logoHref) {
+                if (TextUtils.isEmpty(logoImage)) {
+                    return;
+                }
+                if (playbackLogoView != null) {
+                    playbackLogoView.removeAllViews();
+                    playbackLogoView.addLogo(new PolyvPlayerLogoView.LogoParam().setWidth(0.1F).setHeight(0.1F)
+                            .setAlpha(logoAlpha).setOffsetX(0.05F).setOffsetY(0.05F).setPos(logoPosition).setResUrl(logoImage));
+                }
             }
         });
     }
@@ -364,6 +404,11 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
     }
 
     @Override
+    public void setBaseVideoParams(PolyvBaseVideoParams polyvBaseVideoParams) {
+        baseVideoParams = polyvBaseVideoParams;
+    }
+
+    @Override
     public void destroy() {
 
         if (polyvPPTItem != null && polyvPPTItem.getPPTView() != null) {
@@ -379,6 +424,11 @@ public class PolyvPlaybackVideoItem extends FrameLayout implements View.OnClickL
         if (tipsviewVolume != null) {
             tipsviewVolume.removeAllViews();
             tipsviewVolume = null;
+        }
+
+        if (playbackLogoView != null) {
+            playbackLogoView.removeAllViews();
+            playbackLogoView = null;
         }
     }
 

@@ -86,7 +86,7 @@ public class PolyvLinkMicListView extends ScrollView implements IPolyvRotateBase
         post(new Runnable() {
             @Override
             public void run() {
-                ViewGroup.MarginLayoutParams rlp = getLayoutParamsLayout();
+                MarginLayoutParams rlp = getLayoutParamsLayout();
                 if (rlp == null) {
                     return;
                 }
@@ -108,7 +108,7 @@ public class PolyvLinkMicListView extends ScrollView implements IPolyvRotateBase
         post(new Runnable() {
             @Override
             public void run() {
-                ViewGroup.MarginLayoutParams rlp = getLayoutParamsLayout();
+                MarginLayoutParams rlp = getLayoutParamsLayout();
                 if (rlp == null) {
                     return;
                 }
@@ -122,13 +122,13 @@ public class PolyvLinkMicListView extends ScrollView implements IPolyvRotateBase
     }
 
     public void resetFloatViewLand() {
-        ViewGroup.MarginLayoutParams layoutParams = null;
+        MarginLayoutParams layoutParams = null;
         if (getParent() instanceof RelativeLayout) {
             layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof LinearLayout) {
             layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            layoutParams = (FrameLayout.LayoutParams) getLayoutParams();
+            layoutParams = (LayoutParams) getLayoutParams();
         } else {
             return;
         }
@@ -155,7 +155,7 @@ public class PolyvLinkMicListView extends ScrollView implements IPolyvRotateBase
         } else if (getParent() instanceof LinearLayout) {
             rlp = (LinearLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            rlp = (FrameLayout.LayoutParams) getLayoutParams();
+            rlp = (LayoutParams) getLayoutParams();
         } else {
             return;
         }
@@ -170,14 +170,14 @@ public class PolyvLinkMicListView extends ScrollView implements IPolyvRotateBase
 
     }
 
-    public ViewGroup.MarginLayoutParams getLayoutParamsLayout() {
-        ViewGroup.MarginLayoutParams rlp = null;
+    public MarginLayoutParams getLayoutParamsLayout() {
+        MarginLayoutParams rlp = null;
         if (getParent() instanceof RelativeLayout) {
             rlp = (RelativeLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof LinearLayout) {
             rlp = (LinearLayout.LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            rlp = (FrameLayout.LayoutParams) getLayoutParams();
+            rlp = (LayoutParams) getLayoutParams();
         }
 
         return rlp;

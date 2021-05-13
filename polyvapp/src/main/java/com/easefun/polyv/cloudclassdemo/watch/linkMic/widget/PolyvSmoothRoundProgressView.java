@@ -113,12 +113,12 @@ public class PolyvSmoothRoundProgressView extends View {
 
     private int measureSize(int defaultSize, int measureSpec) {
         int result = defaultSize;
-        int specMode = View.MeasureSpec.getMode(measureSpec);
-        int specSize = View.MeasureSpec.getSize(measureSpec);
+        int specMode = MeasureSpec.getMode(measureSpec);
+        int specSize = MeasureSpec.getSize(measureSpec);
 
-        if (specMode == View.MeasureSpec.EXACTLY) {
+        if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
-        } else if (specMode == View.MeasureSpec.AT_MOST) {
+        } else if (specMode == MeasureSpec.AT_MOST) {
             result = Math.min(result, specSize);
         }
         return result;

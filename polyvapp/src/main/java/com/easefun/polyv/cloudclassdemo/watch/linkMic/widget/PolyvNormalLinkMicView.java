@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.easefun.polyv.cloudclassdemo.watch.linkMic.IPolyvViewVisibilityChangedListener;
 import com.easefun.polyv.foundationsdk.log.PolyvCommonLog;
@@ -21,8 +22,8 @@ import com.easefun.polyv.foundationsdk.utils.PolyvScreenUtils;
  * @create 2018/11/30*
  * @Describe
  */
-public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotateBaseView {
-    private static final String TAG = "PolyvNormalLinkMipcView";
+public class PolyvNormalLinkMicView extends ScrollView implements IPolyvRotateBaseView {
+    private static final String TAG = "PolyvNormalLinkMicView";
     //键盘弹起前得位置
     private int beforeSoftLeft = 0;
     private int beforeSoftTop = 0;
@@ -45,9 +46,8 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
     public PolyvNormalLinkMicView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-// <editor-fold defaultstate="collapsed" desc="set相关方法">
 
-
+    // <editor-fold defaultstate="collapsed" desc="set相关方法">
     @Override
     public void setOnVisibilityChangedListener(IPolyvViewVisibilityChangedListener listener) {
         this.visibilityChangedListener = listener;
@@ -76,13 +76,13 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
         if (!supportRTC) {
             super.setVisibility(INVISIBLE);
         } else {
-            ViewGroup.MarginLayoutParams layoutParams = null;
+            MarginLayoutParams layoutParams = null;
             if (getParent() instanceof RelativeLayout) {
                 layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
             } else if (getParent() instanceof LinearLayout) {
                 layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
             } else if (getParent() instanceof FrameLayout) {
-                layoutParams = (FrameLayout.LayoutParams) getLayoutParams();
+                layoutParams = (LayoutParams) getLayoutParams();
             } else {
                 return;
             }
@@ -93,6 +93,8 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
 
             layoutParams.leftMargin = 0;
             layoutParams.topMargin = 0;
+            layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
             setLayoutParams(layoutParams);
         }
     }
@@ -109,13 +111,15 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
         } else if (getParent() instanceof LinearLayout) {
             rlp = (LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            rlp = (FrameLayout.LayoutParams) getLayoutParams();
+            rlp = (LayoutParams) getLayoutParams();
         } else {
             return;
         }
 
         rlp.leftMargin = 0;
         rlp.topMargin = originTop;
+        rlp.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        rlp.width = ViewGroup.LayoutParams.MATCH_PARENT;
         if (canShow) {
             super.setVisibility(VISIBLE);
         }
@@ -155,12 +159,12 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
             super.setVisibility(visibility);
         }
     }
-// </editor-fold>
+    // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="移动相关">
     @Override
     public void scrollToPosition(int pos, View parent) {
-
+        smoothScrollTo(parent.getRight(), 0);
     }
 
     @Override
@@ -200,13 +204,13 @@ public class PolyvNormalLinkMicView extends LinearLayout implements IPolyvRotate
         } else if (getParent() instanceof LinearLayout) {
             rlp = (LayoutParams) getLayoutParams();
         } else if (getParent() instanceof FrameLayout) {
-            rlp = (FrameLayout.LayoutParams) getLayoutParams();
+            rlp = (LayoutParams) getLayoutParams();
         }
         return rlp;
     }
     // </editor-fold>
 
-// <editor-fold defaultstate="collapsed" desc="系统方法">
+    // <editor-fold defaultstate="collapsed" desc="系统方法">
 
     @Override
     protected void onConfigurationChanged(final Configuration newConfig) {

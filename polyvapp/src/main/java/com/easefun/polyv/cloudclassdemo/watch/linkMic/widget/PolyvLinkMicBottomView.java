@@ -161,7 +161,7 @@ public class PolyvLinkMicBottomView extends LinearLayout implements View.OnClick
             post(new Runnable() {
                 @Override
                 public void run() {
-                    ViewGroup.MarginLayoutParams controller = (MarginLayoutParams) linkMicBottomController.getLayoutParams();
+                    MarginLayoutParams controller = (MarginLayoutParams) linkMicBottomController.getLayoutParams();
                     ViewGroup.LayoutParams brush = linkMicBrushLayout.getLayoutParams();
                     MarginLayoutParams erase = (MarginLayoutParams) controllerErase.getLayoutParams();
 
@@ -190,7 +190,7 @@ public class PolyvLinkMicBottomView extends LinearLayout implements View.OnClick
             post(new Runnable() {
                 @Override
                 public void run() {
-                    ViewGroup.MarginLayoutParams controller = (MarginLayoutParams) linkMicBottomController.getLayoutParams();
+                    MarginLayoutParams controller = (MarginLayoutParams) linkMicBottomController.getLayoutParams();
                     ViewGroup.LayoutParams brush = linkMicBrushLayout.getLayoutParams();
                     MarginLayoutParams erase = (MarginLayoutParams) controllerErase.getLayoutParams();
 
@@ -348,7 +348,7 @@ public class PolyvLinkMicBottomView extends LinearLayout implements View.OnClick
         if (linkMicBottomController != null && linkMicBottomController.getVisibility() == View.VISIBLE
                 && lookAtMeView.getParent() != linkMicBottomController) {
             ((ViewGroup) lookAtMeView.getParent()).removeView(lookAtMeView);
-            LinearLayout.LayoutParams lp = (LayoutParams) lookAtMeView.getLayoutParams();
+            LayoutParams lp = (LayoutParams) lookAtMeView.getLayoutParams();
             lp.weight = 1;
             lp.leftMargin = 0;
             linkMicBottomController.addView(lookAtMeView);
@@ -359,7 +359,7 @@ public class PolyvLinkMicBottomView extends LinearLayout implements View.OnClick
         if (lookAtMeView != null && lookAtMeView.getVisibility() == View.VISIBLE
                 && lookAtMeView.getParent() != linkMicBottomLayout) {
             ((ViewGroup) lookAtMeView.getParent()).removeView(lookAtMeView);
-            LinearLayout.LayoutParams lp = (LayoutParams) lookAtMeView.getLayoutParams();
+            LayoutParams lp = (LayoutParams) lookAtMeView.getLayoutParams();
             lp.weight = 0;
             lp.leftMargin = PolyvScreenUtils.dip2px(getContext(), 20);
             linkMicBottomLayout.addView(lookAtMeView);

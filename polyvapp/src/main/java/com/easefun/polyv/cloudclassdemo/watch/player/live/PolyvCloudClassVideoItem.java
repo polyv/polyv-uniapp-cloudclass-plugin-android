@@ -23,6 +23,7 @@ import com.easefun.polyv.businesssdk.api.auxiliary.PolyvAuxiliaryVideoview;
 import com.easefun.polyv.businesssdk.api.common.player.PolyvPlayError;
 import com.easefun.polyv.businesssdk.api.common.player.listener.IPolyvVideoViewListenerEvent;
 import com.easefun.polyv.businesssdk.model.link.PolyvMicphoneStatus;
+import com.easefun.polyv.businesssdk.model.video.PolyvBaseVideoParams;
 import com.easefun.polyv.businesssdk.model.video.PolyvLiveMarqueeVO;
 import com.easefun.polyv.businesssdk.model.video.PolyvMediaPlayMode;
 import com.easefun.polyv.businesssdk.sub.marquee.PolyvMarqueeItem;
@@ -36,6 +37,7 @@ import com.easefun.polyv.cloudclass.video.PolyvCloudClassVideoView;
 import com.easefun.polyv.cloudclass.video.api.IPolyvCloudClassAudioModeView;
 import com.easefun.polyv.cloudclass.video.api.IPolyvCloudClassListenerEvent;
 import com.easefun.polyv.cloudclassdemo.R;
+import com.easefun.polyv.cloudclassdemo.watch.PolyvCloudClassHomeActivity;
 import com.easefun.polyv.cloudclassdemo.watch.chat.liveInfo.PolyvLiveInfoFragment;
 import com.easefun.polyv.cloudclassdemo.watch.danmu.PolyvDanmuFragment;
 import com.easefun.polyv.cloudclassdemo.watch.player.live.widget.IPolyvLandscapeDanmuSender;
@@ -45,6 +47,7 @@ import com.easefun.polyv.commonui.player.IPolyvVideoItem;
 import com.easefun.polyv.commonui.player.ppt.PolyvPPTItem;
 import com.easefun.polyv.commonui.player.widget.PolyvLightTipsView;
 import com.easefun.polyv.commonui.player.widget.PolyvLoadingLayout;
+import com.easefun.polyv.commonui.player.widget.PolyvPlayerLogoView;
 import com.easefun.polyv.commonui.player.widget.PolyvVolumeTipsView;
 import com.easefun.polyv.commonui.utils.imageloader.PolyvImageLoader;
 import com.easefun.polyv.foundationsdk.log.PolyvCommonLog;
@@ -109,10 +112,15 @@ public class PolyvCloudClassVideoItem extends FrameLayout
     //只听音频View
     private IPolyvCloudClassAudioModeView audioModeView;
 
+    // Logo
+    private PolyvPlayerLogoView cloudClassLogoView;
+
     //开始时间倒计时器
     private CountDownTimer startTimeCountDown;
     //直播开始时间
     private String liveStartTime;
+
+    private PolyvBaseVideoParams baseVideoParams;
 
 
     /**
@@ -222,57 +230,9 @@ public class PolyvCloudClassVideoItem extends FrameLayout
         flSubBackAndGradient.postDelayed(hideTask, 5000);
     }
 
-    private void initialView() {
-
-        rootView = View.inflate(context, R.layout.polyv_cloudclass_item, this);
-
-        ivScreenshot = findViewById(R.id.iv_screenshot);
-
-        rlTop = findViewById(R.id.rl_top);
-        loadingview = findViewById(R.id.loadingview);
-        preparingview = findViewById(R.id.preparingview);
-        tipsviewLight = findViewById(R.id.tipsview_light);
-        tipsviewVolume = findViewById(R.id.tipsview_volume);
-        noStream = findViewById(R.id.no_stream);
-        stopStream = findViewById(R.id.stop_stream);
-        audioModeLayoutRoot = findViewById(R.id.fl_audio_mode_layout_root);
-        marqueeView = context.findViewById(R.id.polyv_marquee_view);
-        tvStartTimeCountDown = findViewById(R.id.tv_start_time_count_down);
-
-        FragmentTransaction fragmentTransaction = context.getSupportFragmentManager().beginTransaction();
-        danmuFragment = new PolyvDanmuFragment();
-        fragmentTransaction.add(R.id.fl_danmu, danmuFragment, "danmuFragment").commit();
-
-        landscapeDanmuSender = new PolyvLandscapeDanmuSendPanel(context, this);
-
-        controller = findViewById(R.id.controller);
-        controller.setOnClickOpenStartSendDanmuListener(new PolyvCloudClassMediaController.OnClickOpenStartSendDanmuListener() {
-            @Override
-            public void onStartSendDanmu() {
-                controller.hide();
-                landscapeDanmuSender.openDanmuSender();
-            }
-        });
-        controller.setDanmuFragment(danmuFragment);
-
-        //只听音频View
-        PolyvCloudClassAudioModeView audioViewImpl = new PolyvCloudClassAudioModeView(getContext());
-        audioViewImpl.setOnChangeVideoModeListener(new PolyvCloudClassAudioModeView.OnChangeVideoModeListener() {
-            @Override
-            public void onClickPlayVideo() {
-                polyvCloudClassVideoView.changeMediaPlayMode(PolyvMediaPlayMode.MODE_VIDEO);
-                controller.changeAudioOrVideoMode(PolyvMediaPlayMode.MODE_VIDEO);
-            }
-        });
-        audioModeView = audioViewImpl;
-        audioModeLayoutRoot.addView(audioModeView.getRoot(), LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-
-        //打开弹幕下的竖屏
-//        controller.enableDanmuInPortrait();
-    }
-
     // <editor-fold defaultstate="collapsed" desc="根据连麦状态调整布局位置">
     private boolean isJoinLinkMic;
+    private int linkMicLayoutWidth = (int) getResources().getDimension(R.dimen.ppt_width);
 
 
     private void sendVideoStartMessage() {
@@ -346,36 +306,55 @@ public class PolyvCloudClassVideoItem extends FrameLayout
         return polyvPPTItem;
     }
 
-    @Override
-    public void destroy() {
-        if (messageDispose != null) {
-            messageDispose.dispose();
-        }
-        if (polyvPPTItem != null && polyvPPTItem.getPPTView() != null) {
-            polyvPPTItem.getPPTView().destroy();
-            polyvPPTItem.removeAllViews();
-            polyvPPTItem = null;
-        }
-        if (tipsviewLight != null) {
-            tipsviewLight.removeAllViews();
-            tipsviewLight = null;
-        }
+    private void initialView() {
 
-        if (tipsviewVolume != null) {
-            tipsviewVolume.removeAllViews();
-            tipsviewVolume = null;
-        }
+        rootView = View.inflate(context, R.layout.polyv_cloudclass_item, this);
 
-        if (danmuFragment != null) {
-            danmuFragment.release();
-            danmuFragment = null;
-        }
+        ivScreenshot = findViewById(R.id.iv_screenshot);
 
-        if (landscapeDanmuSender != null) {
-            landscapeDanmuSender.dismiss();
-        }
+        rlTop = findViewById(R.id.rl_top);
+        loadingview = findViewById(R.id.loadingview);
+        preparingview = findViewById(R.id.preparingview);
+        tipsviewLight = findViewById(R.id.tipsview_light);
+        tipsviewVolume = findViewById(R.id.tipsview_volume);
+        noStream = findViewById(R.id.no_stream);
+        stopStream = findViewById(R.id.stop_stream);
+        audioModeLayoutRoot = findViewById(R.id.fl_audio_mode_layout_root);
+        marqueeView = context.findViewById(R.id.polyv_marquee_view);
+        tvStartTimeCountDown = findViewById(R.id.tv_start_time_count_down);
 
-        stopLiveCountDown();
+        FragmentTransaction fragmentTransaction = context.getSupportFragmentManager().beginTransaction();
+        danmuFragment = new PolyvDanmuFragment();
+        fragmentTransaction.add(R.id.fl_danmu, danmuFragment, "danmuFragment").commit();
+
+        landscapeDanmuSender = new PolyvLandscapeDanmuSendPanel(context, this);
+
+        controller = findViewById(R.id.controller);
+        controller.setOnClickOpenStartSendDanmuListener(new PolyvCloudClassMediaController.OnClickOpenStartSendDanmuListener() {
+            @Override
+            public void onStartSendDanmu() {
+                controller.hide();
+                landscapeDanmuSender.openDanmuSender();
+            }
+        });
+        controller.setDanmuFragment(danmuFragment);
+
+        //只听音频View
+        PolyvCloudClassAudioModeView audioViewImpl = new PolyvCloudClassAudioModeView(getContext());
+        audioViewImpl.setOnChangeVideoModeListener(new PolyvCloudClassAudioModeView.OnChangeVideoModeListener() {
+            @Override
+            public void onClickPlayVideo() {
+                polyvCloudClassVideoView.changeMediaPlayMode(PolyvMediaPlayMode.MODE_VIDEO);
+                controller.changeAudioOrVideoMode(PolyvMediaPlayMode.MODE_VIDEO);
+            }
+        });
+        audioModeView = audioViewImpl;
+        audioModeLayoutRoot.addView(audioModeView.getRoot(), LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
+        //打开弹幕下的竖屏
+//        controller.enableDanmuInPortrait();
+
+        cloudClassLogoView = findViewById(R.id.cloud_class_logo_view);
     }
 
     @Override
@@ -542,8 +521,6 @@ public class PolyvCloudClassVideoItem extends FrameLayout
         this.nickName = nickName;
     }
 
-    private int linkMicLayoutWidth = (int) getResources().getDimension(R.dimen.ppt_width);
-
     private void initialVideoView() {
         polyvCloudClassVideoView = findViewById(R.id.cloudschool_videoview);
         polyvCloudClassVideoView.setAudioModeView(audioModeView);
@@ -600,7 +577,6 @@ public class PolyvCloudClassVideoItem extends FrameLayout
                 controller.handsUpAuto();
 
                 stopLiveCountDown();
-
             }
 
             @Override
@@ -705,8 +681,9 @@ public class PolyvCloudClassVideoItem extends FrameLayout
                 if (marqueeUtils == null)
                     marqueeUtils = new PolyvMarqueeUtils();
                 // 更新为后台设置的跑马灯类型
+                marqueeUtils.setUsediyurl(true);
                 marqueeUtils.updateMarquee(context, marqueeVo,
-                        marqueeItem, nickName);
+                        marqueeItem, nickName, PolyvCloudClassHomeActivity.getMarqueeCode());
             }
         });
 
@@ -792,6 +769,61 @@ public class PolyvCloudClassVideoItem extends FrameLayout
                 }
             }
         });
+        polyvCloudClassVideoView.setOnGetLogoListener(new IPolyvVideoViewListenerEvent.OnGetLogoListener() {
+            @Override
+            public void onLogo(String logoImage, int logoAlpha, int logoPosition, String logoHref) {
+                if (TextUtils.isEmpty(logoImage)) {
+                    return;
+                }
+                if (cloudClassLogoView != null) {
+                    cloudClassLogoView.removeAllViews();
+                    cloudClassLogoView.addLogo(new PolyvPlayerLogoView.LogoParam().setWidth(0.1F).setHeight(0.1F)
+                            .setAlpha(logoAlpha).setOffsetX(0.05F).setOffsetY(0.05F).setPos(logoPosition).setResUrl(logoImage));
+                }
+            }
+        });
+    }
+
+    @Override
+    public void destroy() {
+        if (messageDispose != null) {
+            messageDispose.dispose();
+        }
+        if (polyvPPTItem != null && polyvPPTItem.getPPTView() != null) {
+            polyvPPTItem.getPPTView().destroy();
+            polyvPPTItem.removeAllViews();
+            polyvPPTItem = null;
+        }
+        if (tipsviewLight != null) {
+            tipsviewLight.removeAllViews();
+            tipsviewLight = null;
+        }
+
+        if (tipsviewVolume != null) {
+            tipsviewVolume.removeAllViews();
+            tipsviewVolume = null;
+        }
+
+        if (danmuFragment != null) {
+            danmuFragment.release();
+            danmuFragment = null;
+        }
+
+        if (landscapeDanmuSender != null) {
+            landscapeDanmuSender.dismiss();
+        }
+
+        if (cloudClassLogoView != null) {
+            cloudClassLogoView.removeAllViews();
+            cloudClassLogoView = null;
+        }
+
+        stopLiveCountDown();
+    }
+
+    @Override
+    public void setBaseVideoParams(PolyvBaseVideoParams polyvBaseVideoParams) {
+        baseVideoParams = polyvBaseVideoParams;
     }
 
     public void notifyLinkMicStatusChange(boolean isJoinLinkMic) {

@@ -14,6 +14,8 @@ public class PolyvAppProxy implements AppHookProxy {
         PolyvLiveSDKClient liveSDKClient = PolyvLiveSDKClient.getInstance();
         liveSDKClient.initContext(application);
         liveSDKClient.enableHttpDns(false);
+        liveSDKClient.enableIPV6(true);
+
     }
 
 

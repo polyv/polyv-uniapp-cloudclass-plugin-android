@@ -32,7 +32,7 @@ public class PolyvLandscapeDanmuSendPanel implements IPolyvLandscapeDanmuSender 
     private ImageView ivSendDanmuClose;
     private View anchor;
 
-    private IPolyvLandscapeDanmuSender.OnSendDanmuListener onSendDanmuListener;
+    private OnSendDanmuListener onSendDanmuListener;
 
     public PolyvLandscapeDanmuSendPanel(AppCompatActivity appCompatActivity, View anchor) {
         this.anchor = anchor;

@@ -5,8 +5,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion 28
-        versionCode 3
-        versionName "0.0.3"
+        versionCode 10
+        versionName "0.1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -37,6 +37,7 @@ dependencies {
     compileOnly fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     compileOnly fileTree(dir: '../app/libs', include: ['uniapp-v8-release.aar'])
+    compileOnly fileTree(dir: '../app/libs', include: ['mediaplayer-full-1.0.0.aar'])
 
     compileOnly "com.android.support:recyclerview-v7:28.0.0"
     compileOnly "com.android.support:support-v4:28.0.0"
@@ -44,12 +45,8 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.46.android'
     implementation 'com.facebook.fresco:fresco:0.12.0'
 
-
-    compileOnly 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
-    compileOnly 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
     compileOnly 'com.squareup.retrofit2:retrofit:2.4.0'
     compileOnly 'com.squareup.retrofit2:converter-gson:2.4.0'
-    compileOnly 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     compileOnly 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     compileOnly 'io.reactivex.rxjava2:rxandroid:2.0.2'
     compileOnly 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
